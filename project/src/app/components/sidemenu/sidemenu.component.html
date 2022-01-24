@@ -1,0 +1,5 @@
+<h2>List of sports:</h2>
+<ul *ngFor="let item of sports">
+    <span class="fas" [ngClass]="item.icon"></span>
+    <span>{{item.name}} </span>
+</ul>
