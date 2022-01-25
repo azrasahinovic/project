@@ -3,3 +3,9 @@ export interface Sport {
     icon: string;
     name: string;
 }
+
+export interface Category {
+    id: number;
+    sportID: number;
+    name: string;
+}
