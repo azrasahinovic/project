@@ -8,23 +8,21 @@ import { Sport } from 'src/app/Sport';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  item: Sport[] = [];
+  sport: Sport[] = [];
   sports!: Sport;
-  sport!: Sport[];
+  message: any;
 
   constructor(private sportService: SportService) { 
   }
 
   ngOnInit(): void {
-   this.sportService.apiCall().subscribe((data) => {
-     console.log('get api data', data);
-   });
+  
   }
 
- showItem(): void {
-   this.item = this.item; 
-
- }
+  selectSport(event: any) {
+    this.selectSport = event;
+   
+  }
 
 
 

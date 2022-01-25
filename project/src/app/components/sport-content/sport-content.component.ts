@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { Sport } from 'src/app/Sport';
+import { SportService } from 'src/app/services/sport.service';
 
 @Component({
   selector: 'app-sport-content',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sport-content.component.scss']
 })
 export class SportContentComponent implements OnInit {
+  @Input() selectSport: any;
 
-  constructor() { }
+  constructor(private sportService: SportService) { }
+
 
   ngOnInit(): void {
   }

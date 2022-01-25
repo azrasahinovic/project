@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Sport } from 'src/app/Sport';
+import { SportService } from 'src/app/services/sport.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -8,11 +9,10 @@ import { Sport } from 'src/app/Sport';
   styleUrls: ['./sidemenu.component.scss']
 })
 export class SidemenuComponent implements OnInit {
-  id: any;
-  sport!: Sport[];
-  icon!: Sport[];
-  name!: Sport[];
+
+  sports: Sport[] = [];
   @Output() select: EventEmitter<string> = new EventEmitter();
+
 
   // sports: Array<{id: number; icon: string; name: string; }> = [
   //   {id: 1, icon: 'fa-futbol', name : 'Soccer'},
@@ -23,15 +23,18 @@ export class SidemenuComponent implements OnInit {
   //   {id: 6, icon: 'fa-volleyball-ball', name : 'Volleyball'}
   // ]
 
-  constructor() { }
+  constructor(private sportService: SportService) { }
+  
 
   ngOnInit(): void {
+    this.sportService.getSports().subscribe((sports) => (
+      this.sports = sports.slice(0,10))
+    );
   }
 
   onSelect(sport: any) {
     this.select.emit(sport);
     console.log(sport)
-
   }
 
 }

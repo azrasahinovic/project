@@ -1,7 +1,6 @@
 <h2>List of sports:</h2>
-<!-- <ul *ngFor="let item of sports"> -->
-    <ul>
-    <div (dblclick)="onSelect(sport)">
+<ul>
+    <div *ngFor="let sport of sports" (dblclick)="onSelect(sport)">
     <span class="fas" [ngClass]="sport.icon"> </span>
     <span> {{ sport.name }} </span>
 </div>
