@@ -29,7 +29,7 @@ export class SidemenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.sportService.getSports().subscribe((sports) => (
-      this.sports = sports.slice(0,10))
+      this.sports = sports.slice(0,5))
     );
   }
 

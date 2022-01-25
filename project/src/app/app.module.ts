@@ -11,6 +11,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { SportContentComponent } from './components/sport-content/sport-content.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SoccerComponent } from './sports/soccer/soccer.component';
+import { BoxingComponent } from './sports/boxing/boxing.component';
+import { CounterComponent } from './sports/counter/counter.component';
+import { LolComponent } from './sports/lol/lol.component';
+import { DotaComponent } from './sports/dota/dota.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ContentComponent,
     FooterComponent,
     SidemenuComponent,
-    SportContentComponent
+    SportContentComponent,
+    SoccerComponent,
+    BoxingComponent,
+    CounterComponent,
+    LolComponent,
+    DotaComponent,
+ 
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,13 @@
-<h2>Selected sport</h2>
-<h4 >{{selectedSport}}</h4>
+<h3>
+    Selected sport:
+</h3>
+<ng-container *ngIf="selectedSport">
+    <app-soccer *ngIf="selectedSport.id === 1"></app-soccer>
+    <app-boxing *ngIf="selectedSport.id === 2"></app-boxing>
+    <app-counter *ngIf="selectedSport.id === 3"></app-counter>
+    <app-lol *ngIf="selectedSport.id === 4"></app-lol>
+    <app-dota *ngIf="selectedSport.id === 5"></app-dota>
+   
+    <h5 >{{selectedSport.name}}</h5>
+</ng-container>
 
