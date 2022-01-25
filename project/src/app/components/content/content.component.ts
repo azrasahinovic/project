@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SportService } from 'src/app/services/sport.service';
+import { Sport } from 'src/app/Sport';
 
 @Component({
   selector: 'app-content',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
+  item: Sport[] = [];
+  sports!: Sport;
+  sport!: Sport[];
 
-  constructor() { }
+  constructor(private sportService: SportService) { 
+  }
 
   ngOnInit(): void {
+   this.sportService.apiCall().subscribe((data) => {
+     console.log('get api data', data);
+   });
   }
+
+ showItem(): void {
+   this.item = this.item; 
+
+ }
+
+
 
 }

@@ -1,2 +1,12 @@
-<app-sidemenu></app-sidemenu>
-<app-sport-content></app-sport-content>
+<div class="row">
+    <div class="col-md-4">
+        <app-sidemenu></app-sidemenu>
+    </div>
+<div class="col">
+    <app-sport-content (select)="showItem()">
+        {{item}}
+
+    </app-sport-content>
+</div>
+
+</div>
