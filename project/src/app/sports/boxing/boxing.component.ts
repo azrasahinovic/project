@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/Sport';
+import { SportService } from 'src/app/services/sport.service';
 
 @Component({
   selector: 'app-boxing',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./boxing.component.scss']
 })
 export class BoxingComponent implements OnInit {
+  categories!: Category[];
 
-  constructor() { }
+  constructor(private sportService: SportService) { }
 
-  ngOnInit(): void {
+  
+    ngOnInit(): void {
+      this.sportService.getCategoriesForSport(2).subscribe(categories =>
+        this.categories = categories)
   }
 
 }

@@ -16,7 +16,6 @@ export class SoccerComponent implements OnInit {
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(1).subscribe(categories =>
       this.categories = categories)
-      console.log(this.categories);
       
   }
 }
