@@ -9,7 +9,7 @@ import { Category } from 'src/app/Sport';
 })
 export class SoccerComponent implements OnInit {
   category!: Category;
-  id: any;
+ 
   categories!: Category[];
   public selectedCategory: string = '';
   
