@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SportService } from 'src/app/services/sport.service';
+import { Category } from 'src/app/Sport';
 
 @Component({
   selector: 'app-counter',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./counter.component.scss']
 })
 export class CounterComponent implements OnInit {
+  categories!: Category[];
 
-  constructor() { }
+  constructor(private sportService: SportService) { }
 
   ngOnInit(): void {
+    this.sportService.getCategoriesForSport(109).subscribe(categories =>
+      this.categories = categories)
   }
 
 }

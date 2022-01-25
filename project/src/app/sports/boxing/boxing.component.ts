@@ -12,9 +12,8 @@ export class BoxingComponent implements OnInit {
 
   constructor(private sportService: SportService) { }
 
-  
     ngOnInit(): void {
-      this.sportService.getCategoriesForSport(2).subscribe(categories =>
+      this.sportService.getCategoriesForSport(10).subscribe(categories =>
         this.categories = categories)
   }
 

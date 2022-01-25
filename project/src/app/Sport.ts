@@ -6,6 +6,6 @@ export interface Sport {
 
 export interface Category {
     id: number;
-    sportID: number;
+    sportID: string;
     name: string;
 }

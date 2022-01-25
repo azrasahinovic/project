@@ -8,7 +8,10 @@ import { Category } from 'src/app/Sport';
   styleUrls: ['./soccer.component.scss']
 })
 export class SoccerComponent implements OnInit {
+  category!: Category;
+  id: any;
   categories!: Category[];
+  public selectedCategory: string = '';
   
 
   constructor(private sportService: SportService) { }
@@ -16,6 +19,8 @@ export class SoccerComponent implements OnInit {
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(1).subscribe(categories =>
       this.categories = categories)
-      
+  }
+  updateCategory(event: any) {
+    this.selectedCategory = event.target.value;
   }
 }
