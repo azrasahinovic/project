@@ -9,9 +9,10 @@ import { SportService } from 'src/app/services/sport.service';
   styleUrls: ['./sidemenu.component.scss']
 })
 export class SidemenuComponent implements OnInit {
+  sport!: Sport[];
 
   sports: Sport[] = [];
-  @Output() select: EventEmitter<string> = new EventEmitter();
+  @Output() select: EventEmitter<any> = new EventEmitter();
 
 
   // sports: Array<{id: number; icon: string; name: string; }> = [

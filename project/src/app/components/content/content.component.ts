@@ -11,6 +11,8 @@ export class ContentComponent implements OnInit {
   sport: Sport[] = [];
   sports!: Sport;
   message: any;
+  selectedSport: any;
+  
 
   constructor(private sportService: SportService) { 
   }
@@ -20,7 +22,7 @@ export class ContentComponent implements OnInit {
   }
 
   selectSport(event: any) {
-    this.selectSport = event;
+    this.selectedSport = event;
    
   }
 

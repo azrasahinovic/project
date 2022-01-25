@@ -8,6 +8,7 @@ import { SportService } from 'src/app/services/sport.service';
   styleUrls: ['./sport-content.component.scss']
 })
 export class SportContentComponent implements OnInit {
+  sport!: Sport[];
   @Input() selectSport: any;
 
   constructor(private sportService: SportService) { }
