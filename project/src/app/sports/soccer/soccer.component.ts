@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
 import { Category } from 'src/app/Sport';
 import { Sport } from 'src/app/Sport';
-
 @Component({
   selector: 'app-soccer',
   templateUrl: './soccer.component.html',
@@ -13,8 +12,7 @@ export class SoccerComponent implements OnInit {
   category!: Category;
  
   categories!: Category[];
-  public selectedCategory: string = '';
-  
+  public selectedCategory: any;
 
   constructor(private sportService: SportService) { }
 
@@ -23,6 +21,8 @@ export class SoccerComponent implements OnInit {
       this.categories = categories)
   }
   updateCategory(event: any) {
-    this.selectedCategory = event.target.value;
+    // this.selectedCategory = event.target.value;
+    this.selectedCategory = this.categories.find(el => el.id === event.target.value)
+    console.log(this.selectedCategory);
   }
 }

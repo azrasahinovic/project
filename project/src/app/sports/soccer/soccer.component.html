@@ -6,12 +6,10 @@
                   <option  *ngFor="let category of categories"  [value]="category.id" >{{ category.name }}</option>
                 </select> -->
 
-                <div ngbDropdown class="d-inline-block" (click)="updateCategory($event)" [(ngModel)]="selectedCategory" ngDefaultControl>
+                <div ngbDropdown class="d-inline-block" (click)="updateCategory($event)"  ngDefaultControl>
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Category</button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
-
                         <option  *ngFor="let category of categories" [value]="category.id" >{{ category.name }}</option>
-                        
                     </div>
                   </div>
               </div>
