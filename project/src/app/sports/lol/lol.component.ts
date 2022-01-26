@@ -10,6 +10,7 @@ import { Category } from 'src/app/Sport';
 })
 export class LolComponent implements OnInit {
   categories!: Category[];
+  public selectedCategory: string = '';
 
   constructor(private sportService: SportService) { }
 
@@ -17,5 +18,10 @@ export class LolComponent implements OnInit {
     this.sportService.getCategoriesForSport(110).subscribe(categories =>
       this.categories = categories)
   }
+
+  updateCategory(event: any) {
+    this.selectedCategory = event.target.value;
+  }
+
 
 }

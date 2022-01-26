@@ -1,7 +1,7 @@
 <ul class="list-group">
     <li class="list-group-item">
 <h2>List of sports:</h2>
-    <div *ngFor="let sport of sports" (dblclick)="onSelect(sport)">
+    <div *ngFor="let sport of sports" (click)="onSelect(sport)">
     <li class="list-group-item">
     <span class="fas" [ngClass]="sport.icon"> </span>
     <span> {{ sport.name }} </span>

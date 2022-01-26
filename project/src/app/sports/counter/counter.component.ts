@@ -9,12 +9,17 @@ import { Category } from 'src/app/Sport';
 })
 export class CounterComponent implements OnInit {
   categories!: Category[];
+  public selectedCategory: string = '';
 
   constructor(private sportService: SportService) { }
 
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(109).subscribe(categories =>
       this.categories = categories)
+  }
+
+  updateCategory(event: any) {
+    this.selectedCategory = event.target.value;
   }
 
 }
