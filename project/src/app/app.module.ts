@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,7 @@ import { BoxingComponent } from './sports/boxing/boxing.component';
 import { CounterComponent } from './sports/counter/counter.component';
 import { LolComponent } from './sports/lol/lol.component';
 import { DotaComponent } from './sports/dota/dota.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,9 +39,13 @@ import { DotaComponent } from './sports/dota/dota.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    [NgbPaginationModule, NgbAlertModule],
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

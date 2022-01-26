@@ -9,12 +9,17 @@ import { SportService } from 'src/app/services/sport.service';
 })
 export class BoxingComponent implements OnInit {
   categories!: Category[];
+  public selectedCategory: string = '';
 
   constructor(private sportService: SportService) { }
 
     ngOnInit(): void {
       this.sportService.getCategoriesForSport(10).subscribe(categories =>
         this.categories = categories)
+  }
+
+  updateCategory(event: any) {
+    this.selectedCategory = event.target.value;
   }
 
 }

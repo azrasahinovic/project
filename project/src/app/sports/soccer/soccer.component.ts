@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
 import { Category } from 'src/app/Sport';
+import { Sport } from 'src/app/Sport';
 
 @Component({
   selector: 'app-soccer',
@@ -8,6 +9,7 @@ import { Category } from 'src/app/Sport';
   styleUrls: ['./soccer.component.scss']
 })
 export class SoccerComponent implements OnInit {
+  sport!: Sport[];
   category!: Category;
  
   categories!: Category[];
