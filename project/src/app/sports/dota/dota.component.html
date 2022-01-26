@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
             <div class="col-sm-4" style="float: none; margin: 0 auto;">
-                <div ngbDropdown class="d-inline-block" (click)="updateCategory($event)" [(ngModel)]="selectedCategory" ngDefaultControl>
+                <div ngbDropdown class="d-inline-block" (click)="updateCategory($event)" ngDefaultControl>
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Category</button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
 
@@ -12,9 +12,9 @@
         
         <div class="col" >
             <ul class="list-group">
-                <li class="list-group-item" > id: {{ selectedCategory }}
+                <li class="list-group-item" > id: {{ selectedCategory?.id }} 
                     <li class="list-group-item"> 
-                       name:
+                       name: {{ selectedCategory?.name }}
                         </li>
                 </ul>
         </div>

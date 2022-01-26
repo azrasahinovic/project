@@ -9,7 +9,7 @@ import { Category } from 'src/app/Sport';
 })
 export class DotaComponent implements OnInit {
   categories!: Category[];
-  public selectedCategory: string = '';
+  public selectedCategory: any;
 
   constructor(private sportService: SportService) { }
 
@@ -19,7 +19,7 @@ export class DotaComponent implements OnInit {
   }
 
   updateCategory(event: any) {
-    this.selectedCategory = event.target.value;
+    this.selectedCategory = this.categories.find(el => el.id === event.target.value)
   }
 
 }

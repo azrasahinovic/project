@@ -10,7 +10,7 @@ import { Category } from 'src/app/Sport';
 })
 export class LolComponent implements OnInit {
   categories!: Category[];
-  public selectedCategory: string = '';
+  public selectedCategory: any;
 
   constructor(private sportService: SportService) { }
 
@@ -20,7 +20,7 @@ export class LolComponent implements OnInit {
   }
 
   updateCategory(event: any) {
-    this.selectedCategory = event.target.value;
+    this.selectedCategory = this.categories.find(el => el.id === event.target.value)
   }
 
 
