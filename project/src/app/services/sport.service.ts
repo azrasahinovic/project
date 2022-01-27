@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Sport } from '../Sport';
 import { Category } from '../Sport';
+import { Competition } from '../Sport';
 
 
 
@@ -25,5 +26,9 @@ export class SportService {
   
   getCategoriesForSport(sportID: any): Observable<Category[]> {
     return this.http.get<Category[]>(`https://devmeta.multifeedcenter.com/Category/sport/${sportID}`)
+  }
+
+  getCompetitionsForCategories(categoryID: any): Observable<Competition[]> {
+    return this.http.get<Competition[]>(`https://devmeta.multifeedcenter.com/Competition/category/${categoryID}`)
   }
 }

@@ -9,3 +9,9 @@ export interface Category {
     sportID: string;
     name: string;
 }
+
+export interface Competition {
+    id: number;
+    categoryID: string;
+    name: string;
+}
