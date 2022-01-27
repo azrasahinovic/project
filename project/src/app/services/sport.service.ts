@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Sport } from '../Sport';
+import { Competitor, Sport } from '../Sport';
 import { Category } from '../Sport';
 import { Competition } from '../Sport';
 
@@ -30,5 +30,9 @@ export class SportService {
 
   getCompetitionsForCategories(categoryID: any): Observable<Competition[]> {
     return this.http.get<Competition[]>(`https://devmeta.multifeedcenter.com/Competition/category/${categoryID}`)
+  }
+
+  getCompetitorsForCompetitions(competitorID: any): Observable<Competitor[]> {
+    return this.http.get<Competitor[]>(`https://devmeta.multifeedcenter.com/Player/competitor/${competitorID}`)
   }
 }

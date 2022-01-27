@@ -15,3 +15,9 @@ export interface Competition {
     categoryID: string;
     name: string;
 }
+
+export interface Competitor {
+    id: number;
+    categoryID: string;
+    name: string;
+}

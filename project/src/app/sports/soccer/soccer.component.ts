@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
-import { Category, Competition } from 'src/app/Sport';
+import { Category, Competition, Competitor } from 'src/app/Sport';
 import { Sport } from 'src/app/Sport';
 @Component({
   selector: 'app-soccer',
@@ -16,23 +16,43 @@ export class SoccerComponent implements OnInit {
   competitions!: Competition[];
   public selectedCategory: any;
   selectedCompetitions: any;
+  selectedCompetitors: any;
+  competitors!: Competitor[];
+  competitor!: Competitor[];
 
   constructor(private sportService: SportService) { }
 
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(1).subscribe(categories =>
-      this.categories = categories),
-      this.sportService.getCompetitionsForCategories(5164).subscribe(competitions =>
-        this.competitions = competitions)
+      this.categories = categories.sort((a,b) => a.name.localeCompare(b.name))),
+      this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe(competitions =>
+        this.competitions = competitions.sort((a,b) => a.name.localeCompare(b.name))),
+        this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors =>
+          this.competitors = competitors)
   }
   updateCategory(event: any) {
     // this.selectedCategory = event.target.value;
     this.selectedCategory = this.categories.find(el => el.id === event.target.value)
+    this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe(competitions =>
+      this.competitions = competitions)
+     
+    
     console.log(this.selectedCategory);
   }
   updateCompetitions(event: any) {
+    // this.selectedCategory = event.target.value;
     this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value)
+    this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors =>
+      this.competitors = competitors)
     console.log(this.selectedCompetitions);
-    console.log(this.selectedCompetitions)
+    
+  }
+  updateCompetitors(event: any) {
+    // this.selectedCategory = event.target.value;
+    this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value)
+    console.log(this.selectedCompetitors);
+    
   }
 }
+
+
