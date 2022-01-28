@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-            <div class="col-sm-4" style="float: none; margin: 0 auto;">
+            <div class="col-sm-3" style="float: none; margin: 0 auto;">
                 <!-- <select class="form-control" style="width: 100%;" (change)="updateCategory($event)"  >
                   <option [value]="0">Select Category</option>
                   <option  *ngFor="let category of categories"  [value]="category.id" >{{ category.name }}</option>
@@ -20,7 +20,7 @@
                         </li>
                 </ul>
         </div>
-        <div class="col-md-4" *ngIf="selectedCategory">
+        <div class="col-md-3" *ngIf="selectedCategory">
             <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitions($event)"  ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competition</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
@@ -36,7 +36,7 @@
             </ul>
     </div>
         
-        <div class="col-md-4" *ngIf="selectedCompetitions">
+        <div class="col-md-3" *ngIf="selectedCompetitions">
             <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)" ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competitor</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
@@ -49,17 +49,18 @@
                 id: {{ selectedCompetitors?.id }}
                  </li>
                     <li class="list-group-item"  >  
-                       name FC: {{ selectedCompetitors?.name }}
+                       name: {{ selectedCompetitors?.name }}
                         </li>
                 
             </ul>
-            
-            <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
-            player:
-               {{ player.name }}
-            </li>
-              
         </div>
+        <div class="col"  *ngIf="selectedCompetitors">
+            <ul>Players:
+            <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
+               {{ player.name }}
+            </li></ul>
+        </div>
+        
     </div>
     </div>
 
