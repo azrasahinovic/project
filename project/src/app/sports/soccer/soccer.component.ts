@@ -24,11 +24,7 @@ export class SoccerComponent implements OnInit {
 
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(1).subscribe(categories =>
-      this.categories = categories.sort((a,b) => a.name.localeCompare(b.name))),
-      this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe(competitions =>
-        this.competitions = competitions.sort((a,b) => a.name.localeCompare(b.name))),
-        this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors =>
-          this.competitors = competitors)
+      this.categories = categories.sort((a,b) => a.name.localeCompare(b.name)))
   }
   updateCategory(event: any) {
     // this.selectedCategory = event.target.value;

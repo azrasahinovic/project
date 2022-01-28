@@ -32,7 +32,7 @@ export class SportService {
     return this.http.get<Competition[]>(`https://devmeta.multifeedcenter.com/Competition/category/${categoryID}`)
   }
 
-  getCompetitorsForCompetitions(competitorID: any): Observable<Competitor[]> {
-    return this.http.get<Competitor[]>(`https://devmeta.multifeedcenter.com/Player/competitor/${competitorID}`)
+  getCompetitorsForCompetitions(competitionID: any): Observable<Competitor[]> {
+    return this.http.get<Competitor[]>(`https://devmeta.multifeedcenter.com/Competitor/competition/${competitionID}`)
   }
 }

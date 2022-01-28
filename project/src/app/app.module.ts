@@ -21,6 +21,7 @@ import { DotaComponent } from './sports/dota/dota.component';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     CounterComponent,
     LolComponent,
     DotaComponent,
+
  
   ],
   imports: [
