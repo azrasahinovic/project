@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Competitor, Sport } from '../Sport';
 import { Category } from '../Sport';
 import { Competition } from '../Sport';
+import { Player } from '../Sport';
 
 
 
@@ -35,4 +36,10 @@ export class SportService {
   getCompetitorsForCompetitions(competitionID: any): Observable<Competitor[]> {
     return this.http.get<Competitor[]>(`https://devmeta.multifeedcenter.com/Competitor/competition/${competitionID}`)
   }
+  
+  getPlayersForCompetitors(competitorID: any): Observable<Player[]> {
+    return this.http.get<Player[]>(`https://devmeta.multifeedcenter.com/Player/competitor/${competitorID}`)
+  }
+
+
 }

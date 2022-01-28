@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
-import { Category, Competition, Competitor } from 'src/app/Sport';
+import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 import { Sport } from 'src/app/Sport';
 @Component({
   selector: 'app-soccer',
@@ -19,6 +19,8 @@ export class SoccerComponent implements OnInit {
   selectedCompetitors: any;
   competitors!: Competitor[];
   competitor!: Competitor[];
+  players!: Player[];
+  selectedPlayers: any;
 
   constructor(private sportService: SportService) { }
 
@@ -47,7 +49,8 @@ export class SoccerComponent implements OnInit {
     // this.selectedCategory = event.target.value;
     this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value)
     console.log(this.selectedCompetitors);
-    
+    this.sportService.getPlayersForCompetitors(this.selectedCompetitors?.id).subscribe(players =>
+      this.players = players)
   }
 }
 

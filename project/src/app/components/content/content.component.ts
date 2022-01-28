@@ -12,7 +12,7 @@ export class ContentComponent implements OnInit {
   sports!: Sport;
   message: any;
   selectedSport: any;
-  
+ 
 
   constructor(private sportService: SportService) { 
   }

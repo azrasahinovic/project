@@ -1,6 +1,10 @@
+
 <ul class="list-group">
     <li class="list-group-item">
 <h3>List of sports:</h3>
+
+
+
     <div *ngFor="let sport of sports" (click)="onSelect(sport)">
     <li class="list-group-item">
     <span class="fas" [ngClass]="sport.icon"> </span>
@@ -8,3 +12,4 @@
     </li>
 </div>
 </ul>
+

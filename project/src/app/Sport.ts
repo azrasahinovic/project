@@ -21,3 +21,9 @@ export interface Competitor {
     competitionID: string;
     name: string;
 }
+
+export interface Player {
+    id: number;
+    competitorID: string;
+    name: string;
+}

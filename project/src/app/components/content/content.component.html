@@ -1,9 +1,13 @@
-<div class=" bg-image">
-    <div class="mask" style="background-color: #f1f1f19f;">
+
+
+
+    <div class="mask" style="background-color: #f1f1f1;">
     
 <div class="row">
     <div class="col-md-3">
-        <app-sidemenu (select)="selectSport($event)" ></app-sidemenu>
+        <app-sidemenu (select)="selectSport($event)" > 
+            
+        </app-sidemenu>
     </div>
 <div class="col">
     <app-sport-content [selectedSport]="selectedSport"> 
@@ -12,4 +16,4 @@
 
 </div>
 </div>
-</div>
+

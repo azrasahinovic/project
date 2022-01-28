@@ -37,7 +37,7 @@
     </div>
         
         <div class="col-md-4" *ngIf="selectedCompetitions">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)"  ngDefaultControl>
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)" ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competitor</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competitor of competitors" [value]="competitor.id" >{{ competitor.name }}</option>
@@ -46,12 +46,19 @@
     
         <ul class="list-group" *ngIf="selectedCompetitors">
             <li class="list-group-item" >  
-                  id: {{ selectedCompetitors?.id }}
-                    </li>
-                    <li class="list-group-item" >  
-                       name: {{ selectedCompetitors?.name }}
+                id: {{ selectedCompetitors?.id }}
+                 </li>
+                    <li class="list-group-item"  >  
+                       name FC: {{ selectedCompetitors?.name }}
                         </li>
+                
             </ul>
+            
+            <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
+            player:
+               {{ player.name }}
+            </li>
+              
         </div>
     </div>
     </div>

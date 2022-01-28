@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     CounterComponent,
     LolComponent,
     DotaComponent,
+
 
  
   ],
