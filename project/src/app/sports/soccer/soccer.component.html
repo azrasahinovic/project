@@ -54,7 +54,7 @@
                 
             </ul>
         </div>
-        <div class="col"  *ngIf="selectedCompetitors">
+        <div class="col"  *ngIf="selectedCompetitors" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
             <ul>Players:
             <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
                {{ player.name }}
