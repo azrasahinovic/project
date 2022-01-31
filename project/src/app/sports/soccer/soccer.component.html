@@ -18,7 +18,7 @@
                 </ul>
         </div>
         <div class="col-md-3 gx-3" *ngIf="selectedCategory">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitions($event)" (click)="show" ngDefaultControl>
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitions($event)"  ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competition</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competition of competitions" [value]="competition.id" >{{ competition.name }}</option>
@@ -61,27 +61,20 @@
         </div>
 
 
+     
 <ngb-toast
   *ngIf="show"
-  header="Autohide can be cancelled"
   [delay]="5000"
-  [autohide]="autohide"
-  (mouseenter)="autohide = false"
-  (mouseleave)="autohide = true"
-  (hide)="show = false; autohide = true"
-  [class.bg-warning]="!autohide"
 >
-  <div *ngIf="autohide">
-    Try to mouse hover me.
+  <div *ngIf="showErrorMessage">
+    {{errorMessage}}
   </div>
-  <div *ngIf="!autohide">
-    I will remain visible until you leave again.
-  </div>
+ 
+   {{message}}
+ 
 </ngb-toast>
 
     </div>
-  
-    
   
     </div>
 
