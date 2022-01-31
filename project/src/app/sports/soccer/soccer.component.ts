@@ -23,15 +23,19 @@ export class SoccerComponent implements OnInit {
   competitor!: Competitor[];
   players!: Player[];
   selectedPlayers: any;
-  show = true;
-  autohide = true;
-  
 
+  
+  show: boolean = false;
+  autohide: boolean = true;
+
+   
   constructor(private sportService: SportService) { }
 
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(1).subscribe(categories =>
       this.categories = categories.sort((a,b) => a.name.localeCompare(b.name)))
+     
+      this.show = this.categories == null || this.categories.length === 0;
       
   }
   updateCategory(event: any) {
