@@ -41,11 +41,11 @@ export class SoccerComponent implements OnInit {
         (categories) => {
           this.categories = categories.sort((a, b) => a.name.localeCompare(b.name));
           this.show = this.categories == null || this.categories.length === 0;
-          this.message = 'No categories found';
+          this.message = 'No categories found!';
         },
         (error) => {
           this.showErrorMessage = true;
-          this.errorMessage = 'Something went wrong';
+          this.errorMessage = 'Something went wrong!';
           console.error(error);
         }
 
@@ -55,54 +55,58 @@ export class SoccerComponent implements OnInit {
     // this.selectedCategory = event.target.value;
     this.selectedCategory = this.categories.find(el => 
       el.id === event.target.value);
+      if (this.selectedCategory) {
     this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe((competitions) => {
       this.competitions = competitions;
       this.show = this.competitions == null || this.competitions.length === 0;
-      this.message = 'No competitions found';
+      this.message = 'No competitions found!';
     },
     (error) => {
       this.showErrorMessage = true;
-      this.errorMessage = 'Something went wrong';
+      this.errorMessage = 'Something went wrong!';
       console.error(error);
     }
     );
-     
+  }
     
     console.log(this.selectedCategory);
   }
   updateCompetitions(event: any) {
     // this.selectedCategory = event.target.value;
-    this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value)
+    this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value);
+    if (this.selectedCompetitions) {
     this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors => {
       this.competitors = competitors;
       this.show = this.competitors == null || this.competitors.length === 0;
-      this.message = 'No competitors found';
+      this.message = 'No competitors found!';
     },
     (error) => {
       this.showErrorMessage = true;
-      this.errorMessage = 'Something went wrong';
+      this.errorMessage = 'Something went wrong!';
       console.error(error);
     }
     )
+  }
     console.log(this.selectedCompetitions);
     
   }
   updateCompetitors(event: any) {
     // this.selectedCategory = event.target.value;
-    this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value)
+    this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value);
+    if(this.selectedCompetitors) {
     console.log(this.selectedCompetitors);
     this.sportService.getPlayersForCompetitors(this.selectedCompetitors?.id).subscribe(players => {
       this.players = players;
       this.show = this.players == null || this.players.length === 0;
-      this.message = 'No players found';
+      this.message = 'No players found!';
     },
     (error) => {
       this.showErrorMessage = true;
-      this.errorMessage = 'Something went wrong';
+      this.errorMessage = 'Something went wrong!!';
       console.error(error);
-    }
-    )
+    })
   }
+ }
 }
 
 
