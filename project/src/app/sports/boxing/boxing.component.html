@@ -1,22 +1,70 @@
 <div class="container">
     <div class="row">
-            <div class="col-sm-4" style="float: none; margin: 0 auto;">
-                <div ngbDropdown class="d-inline-block" (click)="updateCategory($event)" ngDefaultControl>
+            <div class="col-sm-3">
+                <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCategory($event)" ngDefaultControl>
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Category</button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
 
                         <option  *ngFor="let category of categories" [value]="category.id" >{{ category.name }}</option>
                     </div>
                   </div>
-              </div>
+              
         
-        <div class="col" >
+        
             <ul class="list-group" *ngIf="selectedCategory">
-                <li class="list-group-item" > id: {{ selectedCategory?.id }}
+                <li class="list-group-item" > 
+                    id: {{ selectedCategory?.id }}
                     <li class="list-group-item"> 
                        name: {{ selectedCategory?.name}}
                         </li>
                 </ul>
         </div>
+
+        <div class="col-sm-3" *ngIf="selectedCategory">
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCampetitions($event)" ngDefaultControl>
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competition</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+
+                    <option  *ngFor="let competition of competitions" [value]="competition.id" >{{ competition.name }}</option>
+                </div>
+              </div>
+          
+    
+    
+        <ul class="list-group" *ngIf="selectedCompetitions">
+            <li class="list-group-item" > 
+                id: {{ selectedCompetitions?.id }}
+                <li class="list-group-item"> 
+                   name: {{ selectedCompetitions?.name}}
+                    </li>
+            </ul>
     </div>
+    <div class="col-sm-3" *ngIf="selectedCompetitions">
+        <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)" ngDefaultControl>
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Player</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
+
+                <option  *ngFor="let competitor of competitors" [value]="competitor.id" >{{ competitor.name }}</option>
+            </div>
+          </div>
+          <ul class="list-group" *ngIf="selectedCompetitors">
+            <li class="list-group-item" > 
+                id: {{ selectedCompetitors?.id }}
+                <li class="list-group-item"> 
+                   name: {{ selectedCompetitors?.name}}
+                    </li>
+            </ul>
+    </div>
+
+
+<!-- <div class="col"  *ngIf="selectedCompetitors" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
+    <ul>Players:
+    <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
+       {{ player.name }}
+    </li></ul>
+</div> -->
+
 </div>
+
+    </div>
+

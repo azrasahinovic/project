@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 import { Sport } from 'src/app/Sport';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'app-soccer',
   templateUrl: './soccer.component.html',
@@ -21,12 +23,16 @@ export class SoccerComponent implements OnInit {
   competitor!: Competitor[];
   players!: Player[];
   selectedPlayers: any;
+  show = false;
+  autohide = true;
+  
 
   constructor(private sportService: SportService) { }
 
   ngOnInit(): void {
     this.sportService.getCategoriesForSport(1).subscribe(categories =>
       this.categories = categories.sort((a,b) => a.name.localeCompare(b.name)))
+      
   }
   updateCategory(event: any) {
     // this.selectedCategory = event.target.value;

@@ -19,9 +19,8 @@ import { CounterComponent } from './sports/counter/counter.component';
 import { LolComponent } from './sports/lol/lol.component';
 import { DotaComponent } from './sports/dota/dota.component';
 import { FormsModule } from '@angular/forms';
-
-
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,9 +36,6 @@ import { FormsModule } from '@angular/forms';
     CounterComponent,
     LolComponent,
     DotaComponent,
-
-
- 
   ],
   imports: [
     BrowserModule,
@@ -49,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     NgbModule,
     [NgbPaginationModule, NgbAlertModule],
-    
+    BrowserAnimationsModule,
+	  ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
