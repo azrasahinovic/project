@@ -23,7 +23,7 @@ export class SoccerComponent implements OnInit {
   competitor!: Competitor[];
   players!: Player[];
   selectedPlayers: any;
-  show = false;
+  show = true;
   autohide = true;
   
 
