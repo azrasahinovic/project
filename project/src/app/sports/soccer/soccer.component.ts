@@ -4,6 +4,7 @@ import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 import { Sport } from 'src/app/Sport';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-soccer',
   templateUrl: './soccer.component.html',
@@ -31,7 +32,10 @@ export class SoccerComponent implements OnInit {
   showErrorMessage!: boolean;
   errorMessage!: string;
 
-  constructor(private sportService: SportService) { }
+  closeResult!: string;
+
+  constructor(private sportService: SportService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.sportService
@@ -116,6 +120,24 @@ export class SoccerComponent implements OnInit {
     })
   }
  }
+
+ open(content: any) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+}
 }
 
 
