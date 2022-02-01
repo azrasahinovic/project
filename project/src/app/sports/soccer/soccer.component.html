@@ -2,10 +2,16 @@
     <div class="row">
             <div class="col-sm-3 gx-3">
 
-                <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCategory($event)"  ngDefaultControl>
-                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Category</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
-                        <option  *ngFor="let category of categories" [value]="category.id" >{{ category.name }}</option>
+                <div ngbDropdown placement="top-right" class="d-inline-block" 
+                (click)="updateCategory($event)" 
+               
+                 ngDefaultControl >
+                    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle
+                     >Select Category</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" 
+                    style="height: 190px; overflow-y: auto; overflow-x: hidden;">
+                        <option  *ngFor="let category of categories" [value]="category.id" 
+                        >{{ category.name }}</option>
                     </div>
                   </div>
         
@@ -18,7 +24,9 @@
                 </ul>
         </div>
         <div class="col-md-3 gx-3" *ngIf="selectedCategory">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitions($event)"  ngDefaultControl>
+            <div ngbDropdown placement="top-right" class="d-inline-block" 
+            (click)="updateCompetitions($event)"
+            ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competition</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competition of competitions" [value]="competition.id" >{{ competition.name }}</option>
@@ -34,7 +42,7 @@
     </div>
         
         <div class="col-md-3 gx-3" *ngIf="selectedCompetitions">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)" ngDefaultControl>
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)"  ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competitor</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competitor of competitors" [value]="competitor.id" >{{ competitor.name }}</option>
@@ -64,7 +72,7 @@
      
 <ngb-toast
   *ngIf="show"
-  [delay]="20000">
+  [delay]="10000">
   <div *ngIf="showErrorMessage">
     {{errorMessage}}
   </div>
