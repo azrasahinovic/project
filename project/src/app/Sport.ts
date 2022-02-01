@@ -2,7 +2,7 @@ export interface Sport {
     id: number;
     icon: string;
     name: string;
-    active: boolean;
+    active?: boolean;
 }
 
 export interface Category {

@@ -52,6 +52,12 @@ updateCategory(event: any) {
   this.selectedCategory = this.categories.find(el => 
     el.id === event.target.value);
     if (this.selectedCategory) {
+      this.selectedCompetitions = null;
+      this.selectedCompetitors = null;
+      this.competitions = [];
+      this.competitors = [];
+      this.players = [];
+
   this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe((competitions) => {
     this.competitions = competitions;
     this.show = this.competitions == null || this.competitions.length === 0;
@@ -71,6 +77,10 @@ updateCompetitions(event: any) {
   // this.selectedCategory = event.target.value;
   this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value);
   if (this.selectedCompetitions) {
+    this.selectedCompetitors = null;
+    this.competitors = [];
+    this.players = [];
+
   this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors => {
     this.competitors = competitors;
     this.show = this.competitors == null || this.competitors.length === 0;
@@ -90,6 +100,8 @@ updateCompetitors(event: any) {
   // this.selectedCategory = event.target.value;
   this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value);
   if(this.selectedCompetitors) {
+    this.players = [];
+    
   console.log(this.selectedCompetitors);
   this.sportService.getPlayersForCompetitors(this.selectedCompetitors?.id).subscribe(players => {
     this.players = players;

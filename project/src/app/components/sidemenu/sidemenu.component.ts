@@ -29,6 +29,8 @@ export class SidemenuComponent implements OnInit {
   }
 
   onSelect(sport: any) {
+    this.sports.forEach(sport => sport.active = false);
+    sport.active = true;
     this.select.emit(sport);
     console.log(sport)
   }

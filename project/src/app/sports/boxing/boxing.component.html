@@ -6,7 +6,7 @@
 
                 <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCategory($event)"  ngDefaultControl>
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Category</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 100px; overflow-y: auto; overflow-x: hidden;">
                         <option  *ngFor="let category of categories" [value]="category.id" >{{ category.name }}</option>
                     </div>
                   </div>
@@ -19,10 +19,10 @@
                         </li>
                 </ul>
         </div>
-        <div class="col-md-4 gx-3" *ngIf="selectedCategory">
+        <div class="col-md-4 gx-3">
             <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitions($event)"  ngDefaultControl>
-                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Competition</button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCategory" >Select Competition</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 100px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competition of competitions" [value]="competition.id" >{{ competition.name }}</option>
                 </div>
               </div>
@@ -37,7 +37,7 @@
         
       
     
-        <div class="col-md-4 gx-3"  *ngIf="selectedCompetitions" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
+        <div class="col-md-4 gx-3" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
             <ul class="list-group">
                 <li class="list-group-item">
             Competitors:
