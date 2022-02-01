@@ -31,8 +31,6 @@ export class SoccerComponent implements OnInit {
   showErrorMessage!: boolean;
   errorMessage!: string;
 
-  
-
   constructor(private sportService: SportService) { }
 
   ngOnInit(): void {
@@ -49,9 +47,9 @@ export class SoccerComponent implements OnInit {
           this.errorMessage = 'Something went wrong!';
           console.error(error);
         }
-
       ); 
-  }
+}
+
   updateCategory(event: any) {
     // this.selectedCategory = event.target.value;
     this.selectedCategory = this.categories.find(el => 
@@ -76,8 +74,9 @@ export class SoccerComponent implements OnInit {
     }
     );
   }
-  
-  }
+
+}
+
   updateCompetitions(event: any) {
     // this.selectedCategory = event.target.value;
     this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value);
@@ -98,8 +97,8 @@ export class SoccerComponent implements OnInit {
     )
   }
     console.log(this.selectedCompetitions);
-    
   }
+
   updateCompetitors(event: any) {
     // this.selectedCategory = event.target.value;
     this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value);
@@ -118,9 +117,6 @@ export class SoccerComponent implements OnInit {
     })
   }
  }
-
-
-
 }
 
 
