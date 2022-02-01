@@ -1,10 +1,9 @@
 <div class="container">
     <div class="row">
-            <div class="col-sm-3 gx-3">
+            <div class="col-md-3 gx-3">
 
                 <div ngbDropdown placement="top-right" class="d-inline-block" 
                 (click)="updateCategory($event)" 
-               
                  ngDefaultControl >
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle
                      >Select Category</button>
@@ -16,7 +15,7 @@
                   </div>
         
                 <ul class="list-group" *ngIf="selectedCategory">
-                    <li class="list-group-item" > id: {{ selectedCategory?.id }} 
+                    <li class="list-group-item"> id: {{ selectedCategory?.id }} 
                         <li class="list-group-item"> 
                            name: {{ selectedCategory?.name }}
                             </li>
@@ -66,7 +65,6 @@
                {{ player.name }}
             </li></ul>
         </div>
-
 </div>
      
 <ngb-toast
@@ -77,7 +75,5 @@
   </div>
    {{message}}
  </ngb-toast>
-
-
 </div>
 

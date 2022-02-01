@@ -74,7 +74,6 @@ export class SoccerComponent implements OnInit {
     }
     );
   }
-
 }
 
   updateCompetitions(event: any) {

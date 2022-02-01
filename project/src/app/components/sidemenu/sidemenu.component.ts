@@ -21,11 +21,8 @@ export class SidemenuComponent implements OnInit {
   
 
   ngOnInit(): void {
-     
     this.sportService.getSports().subscribe((sports) => (
-      this.sports = sports.slice(0,5))
-    );
-   
+      this.sports = sports.slice(0,5)));
   }
 
   onSelect(sport: any) {
@@ -34,7 +31,4 @@ export class SidemenuComponent implements OnInit {
     this.select.emit(sport);
     console.log(sport)
   }
-
-
-
 }
