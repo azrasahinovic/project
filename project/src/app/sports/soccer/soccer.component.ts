@@ -36,6 +36,8 @@ export class SoccerComponent implements OnInit {
   closeResult!: string;
   selectedEditType = '';
   
+  
+  
 
   constructor(private sportService: SportService,
               private modalService: NgbModal) { }
@@ -57,10 +59,10 @@ export class SoccerComponent implements OnInit {
       ); 
 }
 
-  updateCategory(event: any) {
+  selectCategory(event: any) {
     // this.selectedCategory = event.target.value;
-    this.selectedCategory = this.categories.find(el => 
-      el.id === event.target.value);
+    this.selectedCategory = this.categories.find(
+      el => el.id === event.target.value);
       
       if (this.selectedCategory) {
         this.selectedCompetitions = null;
@@ -68,8 +70,14 @@ export class SoccerComponent implements OnInit {
         this.competitions = [];
         this.competitors = [];
         this.players = [];
-        
-    this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe((competitions) => {
+
+        this.getCompetitionsForCategory(this.selectedCategory.id);
+      }
+    }
+    
+      getCompetitionsForCategory(category: string) {
+        this.sportService.getCompetitionsForCategories(this.category).subscribe(
+          (competitions) => {
       this.competitions = competitions;
       this.show = this.competitions == null || this.competitions.length === 0;
       this.message = 'No competitions found!';
@@ -78,10 +86,10 @@ export class SoccerComponent implements OnInit {
       this.showErrorMessage = true;
       this.errorMessage = 'Something went wrong!';
       console.error(error);
+    });
     }
-    );
-  }
-}
+
+  
 
   updateCompetitions(event: any) {
     // this.selectedCategory = event.target.value;
@@ -128,12 +136,14 @@ export class SoccerComponent implements OnInit {
   this.selectedEditType = type;
   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
     this.selectedEditType = '';
-    
+   
     this.closeResult = `Closed with: ${result}`;
+    
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
 }
+
 private getDismissReason(reason: any): string {
   if (reason === ModalDismissReasons.ESC) {
     return 'by pressing ESC';
@@ -141,6 +151,16 @@ private getDismissReason(reason: any): string {
     return 'by clicking on a backdrop';
   } else {
     return `with: ${reason}`;
+  }
+}
+
+save() {
+
+  if(this.selectedEditType === 'category') {
+  
+    this.sportService.urediCategory(this.category).subscribe(
+      category => this.category = category
+    );
   }
 }
 

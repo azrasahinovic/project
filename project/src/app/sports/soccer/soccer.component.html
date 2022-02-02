@@ -2,7 +2,7 @@
     <div class="row">
             <div class="col-md-3 gx-3">
                 <div ngbDropdown placement="top-right" class="d-inline-block" 
-                (click)="updateCategory($event)" 
+                (click)="selectCategory($event)" 
                  ngDefaultControl >
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle
                      >Select Category</button>
@@ -91,9 +91,7 @@
 <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+     
     </div>
     <div class="modal-body">
       <form>
@@ -120,7 +118,8 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Close</button>
     </div>
   </ng-template>
 
