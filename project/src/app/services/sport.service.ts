@@ -6,7 +6,11 @@ import { Category } from '../Sport';
 import { Competition } from '../Sport';
 import { Player } from '../Sport';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +46,12 @@ export class SportService {
     return this.http.get<Player[]>(`https://devmeta.multifeedcenter.com/Player/competitor/${competitorID}`)
   }
 
+ 
+
+ 
+
 
 }
+
+
+

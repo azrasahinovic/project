@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row">
             <div class="col-md-3 gx-3">
-
                 <div ngbDropdown placement="top-right" class="d-inline-block" 
                 (click)="updateCategory($event)" 
                  ngDefaultControl >
@@ -22,7 +21,7 @@
                     </ul> 
                     <button class="btn btn-primary " 
                     *ngIf="selectedCategory" 
-                    (click)="open(content)">Edit</button>
+                    (click)="open(content, 'category')">Edit</button>
 
         </div>
         <div class="col-md-3 gx-3">
@@ -43,7 +42,8 @@
             </ul>
             <button class="btn btn-primary " 
             *ngIf="selectedCompetitions" 
-            (click)="open(content)">Edit</button>
+            (click)="open(content, 'competition')">Edit</button>
+           
     </div>
         
         <div class="col-md-3 gx-3">
@@ -65,7 +65,8 @@
             </ul>
             <button class="btn btn-primary " 
             *ngIf="selectedCompetitors" 
-            (click)="open(content)">Edit</button>
+            (click)="open(content, 'competitor')">Edit</button>
+           
         </div>
         <div class="col gx-3" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
             <ul class="list-group">
@@ -97,10 +98,24 @@
     <div class="modal-body">
       <form>
         <div class="form-group">
-         <label for="name">Edit Name</label>
+          <ng-container *ngIf="selectedEditType === 'category'">
+         <label for="name">Edit Category Name: </label>
          <div class="input-group">
              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCategory.name">
          </div>
+        </ng-container>
+        <ng-container *ngIf="selectedEditType === 'competition'">
+          <label for="name">Edit Competition Name: </label>
+          <div class="input-group">
+              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetitions.name">
+          </div>
+         </ng-container>
+         <ng-container *ngIf="selectedEditType === 'competitor'">
+          <label for="name">Edit Competitor Name: </label>
+          <div class="input-group">
+              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetitors.name">
+          </div>
+         </ng-container>
           </div>
       </form>
     </div>
@@ -108,5 +123,6 @@
       <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
     </div>
   </ng-template>
+
 
 

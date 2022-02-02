@@ -5,6 +5,7 @@ import { Sport } from 'src/app/Sport';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 @Component({
   selector: 'app-soccer',
   templateUrl: './soccer.component.html',
@@ -17,7 +18,7 @@ export class SoccerComponent implements OnInit {
   categories!: Category[];
   competition!: Competition;
   competitions!: Competition[];
-  public selectedCategory: any;
+  selectedCategory: any;
   selectedCompetitions: any;
   selectedCompetitors: any;
   competitors!: Competitor[];
@@ -33,6 +34,8 @@ export class SoccerComponent implements OnInit {
   errorMessage!: string;
 
   closeResult!: string;
+  selectedEditType = '';
+  
 
   constructor(private sportService: SportService,
               private modalService: NgbModal) { }
@@ -121,14 +124,16 @@ export class SoccerComponent implements OnInit {
   }
  }
 
- open(content: any) {
+ open(content: any, type: string) {
+  this.selectedEditType = type;
   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.selectedEditType = '';
+    
     this.closeResult = `Closed with: ${result}`;
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
 }
-
 private getDismissReason(reason: any): string {
   if (reason === ModalDismissReasons.ESC) {
     return 'by pressing ESC';
@@ -138,6 +143,8 @@ private getDismissReason(reason: any): string {
     return `with: ${reason}`;
   }
 }
+
+
 }
 
 
