@@ -173,6 +173,9 @@ export class SoccerComponent implements OnInit {
 
  save() {
   if(this.selectedEditType === 'category') {
+    console.log(this.selectedCategory);
+    
+    this.category = this.selectedCategory;
     this.sportService.editCategory(this.category).subscribe(
       category => this.category = category
     );

@@ -6,5 +6,12 @@
 }
 
 .active {
-    border-left: 5px solid rgba(78, 124, 136, 0.6);
+    border-left: 5px solid black;
+    
+}
+
+.list-group-item-action:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }

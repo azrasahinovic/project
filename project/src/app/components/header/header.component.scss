@@ -1,4 +1,9 @@
 .container-fluid {
+    background-image: url(https://www.district158.org/hms/wp-content/uploads/sites/20/2019/10/Sports2-265.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+   height: 400px;
    margin-bottom: 30px;
     padding: 2px;
     
@@ -6,6 +11,18 @@
 
 .form-inline {
     width: 300px;
+}
+
+h1 {
+   justify-content: center;
+   align-items: center;
+   color: white;
+   background-color: rgba(0, 0, 0, 0.733);
+   padding: 20px;
+   margin-top: 90px;
+  
+   margin-right: 20px;
+   margin-left: 20px;
 }
 
 
