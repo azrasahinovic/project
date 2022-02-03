@@ -46,14 +46,20 @@ export class SportService {
     return this.http.get<Player[]>(`https://devmeta.multifeedcenter.com/Player/competitor/${competitorID}`)
   }
 
-  urediCategory(category: Category): Observable<Category>  {
+  editCategory(category: Category): Observable<Category>  {
     const url = `.../${category.id}`;
     return this.http.put<Category>(url, category, httpOptions);
   }
 
- 
+  editCompetition(competition: Competition): Observable<Competition>  {
+    const url = `.../${competition.id}`;
+    return this.http.put<Competition>(url, competition, httpOptions);
+  }
 
-
+  editCompetitor(competitor: Competitor): Observable<Competitor>  {
+    const url = `.../${competitor.id}`;
+    return this.http.put<Competitor>(url, competitor, httpOptions);
+  }
 }
 
 

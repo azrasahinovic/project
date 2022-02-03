@@ -5,7 +5,7 @@ import { Sport } from 'src/app/Sport';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+
 @Component({
   selector: 'app-soccer',
   templateUrl: './soccer.component.html',
@@ -19,8 +19,8 @@ export class SoccerComponent implements OnInit {
   competition!: Competition;
   competitions!: Competition[];
   selectedCategory: any;
-  selectedCompetitions: any;
-  selectedCompetitors: any;
+  selectedCompetition: any;
+  selectedCompetitor: any;
   competitors!: Competitor[];
   competitor!: Competitor[];
   players!: Player[];
@@ -35,9 +35,9 @@ export class SoccerComponent implements OnInit {
 
   closeResult!: string;
   selectedEditType = '';
+
   
-  
-  
+
 
   constructor(private sportService: SportService,
               private modalService: NgbModal) { }
@@ -65,8 +65,8 @@ export class SoccerComponent implements OnInit {
       el => el.id === event.target.value);
       
       if (this.selectedCategory) {
-        this.selectedCompetitions = null;
-        this.selectedCompetitors = null;
+        this.selectedCompetition = null;
+        this.selectedCompetitor = null;
         this.competitions = [];
         this.competitors = [];
         this.players = [];
@@ -76,7 +76,7 @@ export class SoccerComponent implements OnInit {
     }
     
       getCompetitionsForCategory(category: string) {
-        this.sportService.getCompetitionsForCategories(this.category).subscribe(
+        this.sportService.getCompetitionsForCategories(category).subscribe(
           (competitions) => {
       this.competitions = competitions;
       this.show = this.competitions == null || this.competitions.length === 0;
@@ -87,18 +87,27 @@ export class SoccerComponent implements OnInit {
       this.errorMessage = 'Something went wrong!';
       console.error(error);
     });
+    console.log(this.selectedCategory);
     }
 
   
 
-  updateCompetitions(event: any) {
+  selectCompetition(event: any) {
     // this.selectedCategory = event.target.value;
-    this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value);
-    if (this.selectedCompetitions) {
-      this.selectedCompetitors = null;
+    this.selectedCompetition = this.competitions.find(
+      el => el.id === event.target.value);
+
+    if (this.selectedCompetition) {
+      this.selectedCompetitor = null;
       this.competitors = [];
       this.players = [];
-    this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors => {
+
+      this.getCompetitorsForCompetition(this.selectedCompetition.id);
+    }
+  }
+  getCompetitorsForCompetition(competition: string) {
+  this.sportService.getCompetitorsForCompetitions(competition).subscribe(
+    competitors => {
       this.competitors = competitors;
       this.show = this.competitors == null || this.competitors.length === 0;
       this.message = 'No competitors found!';
@@ -109,17 +118,25 @@ export class SoccerComponent implements OnInit {
       console.error(error);
     }
     )
-  }
-    console.log(this.selectedCompetitions);
-  }
+  
+    console.log(this.selectedCompetition);
+}
 
-  updateCompetitors(event: any) {
-    // this.selectedCategory = event.target.value;
-    this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value);
-    if(this.selectedCompetitors) {
+  selectCompetitor(event: any) {
+    this.selectedCompetitor = this.competitors.find
+    (el => el.id === event.target.value);
+
+    if(this.selectedCompetitor) {
       this.players = [];
-    console.log(this.selectedCompetitors);
-    this.sportService.getPlayersForCompetitors(this.selectedCompetitors?.id).subscribe(players => {
+
+      this.getPlayersForCompetitor(this.selectedCompetitor.id);
+    }
+    console.log(this.selectedCompetitor);
+  }
+    
+    getPlayersForCompetitor(competitor: string) {
+    this.sportService.getPlayersForCompetitors(competitor).subscribe(
+      players => {
       this.players = players;
       this.show = this.players == null || this.players.length === 0;
       this.message = 'No players found!';
@@ -130,7 +147,7 @@ export class SoccerComponent implements OnInit {
       console.error(error);
     })
   }
- }
+ 
 
  open(content: any, type: string) {
   this.selectedEditType = type;
@@ -142,9 +159,9 @@ export class SoccerComponent implements OnInit {
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
-}
+ }
 
-private getDismissReason(reason: any): string {
+ private getDismissReason(reason: any): string {
   if (reason === ModalDismissReasons.ESC) {
     return 'by pressing ESC';
   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -152,18 +169,15 @@ private getDismissReason(reason: any): string {
   } else {
     return `with: ${reason}`;
   }
-}
+ }
 
-save() {
-
+ save() {
   if(this.selectedEditType === 'category') {
-  
-    this.sportService.urediCategory(this.category).subscribe(
+    this.sportService.editCategory(this.category).subscribe(
       category => this.category = category
     );
   }
-}
-
+ }
 
 }
 

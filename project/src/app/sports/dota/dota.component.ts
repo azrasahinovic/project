@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
+import { ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dota',
@@ -10,11 +11,12 @@ import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 export class DotaComponent implements OnInit {
   
   categories!: Category[];
+  category!: Category;
   competition!: Competition;
   competitions!: Competition[];
   public selectedCategory: any;
-  selectedCompetitions: any;
-  selectedCompetitors: any;
+  selectedCompetition: any;
+  selectedCompetitor: any;
   competitors!: Competitor[];
   competitor!: Competitor[];
   players!: Player[];
@@ -27,8 +29,12 @@ export class DotaComponent implements OnInit {
   showErrorMessage!: boolean;
   errorMessage!: string;
 
+  closeResult!: string;
+  selectedEditType = '';
 
-  constructor(private sportService: SportService) { }
+
+  constructor(private sportService: SportService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.sportService
@@ -47,41 +53,81 @@ export class DotaComponent implements OnInit {
 
     ); 
 }
-updateCategory(event: any) {
+selectCategory(event: any) {
   // this.selectedCategory = event.target.value;
-  this.selectedCategory = this.categories.find(el => 
-    el.id === event.target.value);
-    if (this.selectedCategory) {
-      this.selectedCompetitions = null;
-      this.selectedCompetitors = null;
-      this.competitions = [];
-      this.competitors = [];
-      this.players = [];
+//   this.selectedCategory = this.categories.find(el => 
+//     el.id === event.target.value);
+//     if (this.selectedCategory) {
+//       this.selectedCompetition = null;
+//       this.selectedCompetitor = null;
+//       this.competitions = [];
+//       this.competitors = [];
+//       this.players = [];
 
-  this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe((competitions) => {
-    this.competitions = competitions;
-    this.show = this.competitions == null || this.competitions.length === 0;
-    this.message = 'No competitions found!';
-  },
-  (error) => {
-    this.showErrorMessage = true;
-    this.errorMessage = 'Something went wrong!';
-    console.error(error);
-  }
-  );
-}
+//   this.sportService.getCompetitionsForCategories(this.selectedCategory?.id).subscribe((competitions) => {
+//     this.competitions = competitions;
+//     this.show = this.competitions == null || this.competitions.length === 0;
+//     this.message = 'No competitions found!';
+//   },
+//   (error) => {
+//     this.showErrorMessage = true;
+//     this.errorMessage = 'Something went wrong!';
+//     console.error(error);
+//   }
+//   );
+// }
   
-  console.log(this.selectedCategory);
-}
-updateCompetitions(event: any) {
-  // this.selectedCategory = event.target.value;
-  this.selectedCompetitions = this.competitions.find(el => el.id === event.target.value);
-  if (this.selectedCompetitions) {
-    this.selectedCompetitors = null;
+//   console.log(this.selectedCategory);
+// }
+
+//new function GetCompetitionsForCategory
+
+this.selectedCategory = this.categories.find(
+  el => el.id === event.target.value);
+  
+  if (this.selectedCategory) {
+    this.selectedCompetition = null;
+    this.selectedCompetitor = null;
+    this.competitions = [];
     this.competitors = [];
     this.players = [];
 
-  this.sportService.getCompetitorsForCompetitions(this.selectedCompetitions?.id).subscribe(competitors => {
+    this.getCompetitionsForCategory(this.selectedCategory.id);
+  }
+}
+
+  getCompetitionsForCategory(category: string) {
+    this.sportService.getCompetitionsForCategories(category).subscribe(
+      (competitions) => {
+  this.competitions = competitions;
+  this.show = this.competitions == null || this.competitions.length === 0;
+  this.message = 'No competitions found!';
+},
+(error) => {
+  this.showErrorMessage = true;
+  this.errorMessage = 'Something went wrong!';
+  console.error(error);
+});
+console.log(this.selectedCategory);
+}
+
+
+selectCompetition(event: any) {
+  // this.selectedCategory = event.target.value;
+  this.selectedCompetition = this.competitions.find(
+    el => el.id === event.target.value);
+
+  if (this.selectedCompetition) {
+    this.selectedCompetitor = null;
+    this.competitors = [];
+    this.players = [];
+
+    this.getCompetitorsForCompetition(this.selectedCompetition.id);
+  }
+}
+getCompetitorsForCompetition(competition: string) {
+this.sportService.getCompetitorsForCompetitions(competition).subscribe(
+  competitors => {
     this.competitors = competitors;
     this.show = this.competitors == null || this.competitors.length === 0;
     this.message = 'No competitors found!';
@@ -92,18 +138,26 @@ updateCompetitions(event: any) {
     console.error(error);
   }
   )
+
+  console.log(this.selectedCompetition);
 }
-  console.log(this.selectedCompetitions);
-  
-}
-updateCompetitors(event: any) {
-  // this.selectedCategory = event.target.value;
-  this.selectedCompetitors = this.competitors.find(el => el.id === event.target.value);
-  if(this.selectedCompetitors) {
+
+
+selectCompetitor(event: any) {
+  this.selectedCompetitor = this.competitors.find
+  (el => el.id === event.target.value);
+
+  if(this.selectedCompetitor) {
     this.players = [];
-    
-  console.log(this.selectedCompetitors);
-  this.sportService.getPlayersForCompetitors(this.selectedCompetitors?.id).subscribe(players => {
+
+    this.getPlayersForCompetitor(this.selectedCompetitor.id);
+  }
+  console.log(this.selectedCompetitor);
+}
+  
+  getPlayersForCompetitor(competitor: string) {
+  this.sportService.getPlayersForCompetitors(competitor).subscribe(
+    players => {
     this.players = players;
     this.show = this.players == null || this.players.length === 0;
     this.message = 'No players found!';
@@ -114,7 +168,37 @@ updateCompetitors(event: any) {
     console.error(error);
   })
 }
-}
+
+
+open(content: any, type: string) {
+  this.selectedEditType = type;
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.selectedEditType = '';
+   
+    this.closeResult = `Closed with: ${result}`;
+    
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+ }
+
+ private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+ }
+
+ save() {
+  if(this.selectedEditType === 'category') {
+    this.sportService.editCategory(this.category).subscribe(
+      category => this.category = category
+    );
+  }
+ }
 }
 
 

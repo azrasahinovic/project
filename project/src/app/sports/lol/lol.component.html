@@ -2,7 +2,7 @@
     <div class="row">
             <div class="col-md-3 gx-3">
 
-                <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCategory($event)"  ngDefaultControl>
+                <div ngbDropdown placement="top-right" class="d-inline-block" (click)="selectCategory($event)"  ngDefaultControl>
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle >Select Category</button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                         <option  *ngFor="let category of categories" [value]="category.id" >{{ category.name }}</option>
@@ -16,40 +16,49 @@
                        name: {{ selectedCategory?.name }}
                         </li>
                 </ul>
+                <button class="btn btn-primary " 
+                *ngIf="selectedCategory" 
+                (click)="open(content, 'category')">Edit</button>
         </div>
         <div class="col-md-3 gx-3">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitions($event)"  ngDefaultControl>
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="selectCompetition($event)"  ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCategory">Select Competition</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competition of competitions" [value]="competition.id" >{{ competition.name }}</option>
                 </div>
               </div>
     
-        <ul class="list-group" *ngIf="selectedCompetitions">
-            <li class="list-group-item" > id: {{ selectedCompetitions?.id }} 
+        <ul class="list-group" *ngIf="selectedCompetition">
+            <li class="list-group-item" > id: {{ selectedCompetition?.id }} 
                 <li class="list-group-item"> 
-                   name: {{ selectedCompetitions?.name }}
+                   name: {{ selectedCompetition?.name }}
                     </li>
             </ul>
+            <button class="btn btn-primary " 
+            *ngIf="selectedCompetition" 
+            (click)="open(content, 'competition')">Edit</button>
     </div>
         
         <div class="col-md-3 gx-3">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)" ngDefaultControl>
-                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCompetitions" >Select Competitor</button>
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="selectCompetitor($event)" ngDefaultControl>
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCompetition" >Select Competitor</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competitor of competitors" [value]="competitor.id" >{{ competitor.name }}</option>
                 </div>
               </div>
     
-        <ul class="list-group" *ngIf="selectedCompetitors">
+        <ul class="list-group" *ngIf="selectedCompetitor">
             <li class="list-group-item" >  
-                id: {{ selectedCompetitors?.id }}
+                id: {{ selectedCompetitor?.id }}
                  </li>
                     <li class="list-group-item"  >  
-                       name: {{ selectedCompetitors?.name }}
+                       name: {{ selectedCompetitor?.name }}
                         </li>
                 
             </ul>
+            <button class="btn btn-primary " 
+            *ngIf="selectedCompetitor" 
+            (click)="open(content, 'competitor')">Edit</button>
         </div>
         <div class="col gx-3" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
             <ul class="list-group">
@@ -70,6 +79,41 @@
   </div>
    {{message}}
  </ngb-toast>
-
-
+ 
 </div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+     
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <ng-container *ngIf="selectedEditType === 'category'">
+         <label for="name">Edit Category Name: </label>
+         <div class="input-group">
+             <input id="name" name="name" class="form-control" [(ngModel)]="selectedCategory.name">
+         </div>
+        </ng-container>
+        <ng-container *ngIf="selectedEditType === 'competition'">
+          <label for="name">Edit Competition Name: </label>
+          <div class="input-group">
+              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetition.name">
+          </div>
+         </ng-container>
+         <ng-container *ngIf="selectedEditType === 'competitor'">
+          <label for="name">Edit Competitor Name: </label>
+          <div class="input-group">
+              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetitor.name">
+          </div>
+         </ng-container>
+          </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+  </ng-template>

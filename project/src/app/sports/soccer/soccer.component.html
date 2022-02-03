@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-3 gx-3">
             <div ngbDropdown placement="top-right" class="d-inline-block" 
-            (click)="updateCompetitions($event)"
+            (click)="selectCompetition($event)"
             ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCategory">Select Competition</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
@@ -34,37 +34,37 @@
                 </div>
               </div>
     
-        <ul class="list-group" *ngIf="selectedCompetitions">
-            <li class="list-group-item" > id: {{ selectedCompetitions?.id }} 
+        <ul class="list-group" *ngIf="selectedCompetition">
+            <li class="list-group-item" > id: {{ selectedCompetition?.id }} 
                 <li class="list-group-item"> 
-                   name: {{ selectedCompetitions?.name }}
+                   name: {{ selectedCompetition?.name }}
                     </li>
             </ul>
             <button class="btn btn-primary " 
-            *ngIf="selectedCompetitions" 
+            *ngIf="selectedCompetition" 
             (click)="open(content, 'competition')">Edit</button>
            
     </div>
         
         <div class="col-md-3 gx-3">
-            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="updateCompetitors($event)"  ngDefaultControl>
-                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCompetitions">Select Competitor</button>
+            <div ngbDropdown placement="top-right" class="d-inline-block" (click)="selectCompetitor($event)"  ngDefaultControl>
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCompetition">Select Competitor</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
                     <option  *ngFor="let competitor of competitors" [value]="competitor.id" >{{ competitor.name }}</option>
                 </div>
               </div>
     
-        <ul class="list-group" *ngIf="selectedCompetitors">
+        <ul class="list-group" *ngIf="selectedCompetitor">
             <li class="list-group-item" >  
-                id: {{ selectedCompetitors?.id }}
+                id: {{ selectedCompetitor?.id }}
                  </li>
                     <li class="list-group-item"  >  
-                       name: {{ selectedCompetitors?.name }}
+                       name: {{ selectedCompetitor?.name }}
                         </li>
                 
             </ul>
             <button class="btn btn-primary " 
-            *ngIf="selectedCompetitors" 
+            *ngIf="selectedCompetitor" 
             (click)="open(content, 'competitor')">Edit</button>
            
         </div>
@@ -72,7 +72,7 @@
             <ul class="list-group">
                 <li class="list-group-item">
             Players:
-            <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
+            <li class="list-group-item"  *ngFor="let player of players" [value]="player.id" >
                {{ player.name }}
             </li></ul>
         </div>
@@ -105,13 +105,13 @@
         <ng-container *ngIf="selectedEditType === 'competition'">
           <label for="name">Edit Competition Name: </label>
           <div class="input-group">
-              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetitions.name">
+              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetition.name">
           </div>
          </ng-container>
          <ng-container *ngIf="selectedEditType === 'competitor'">
           <label for="name">Edit Competitor Name: </label>
           <div class="input-group">
-              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetitors.name">
+              <input id="name" name="name" class="form-control" [(ngModel)]="selectedCompetitor.name">
           </div>
          </ng-container>
           </div>
