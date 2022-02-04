@@ -73,11 +73,12 @@
                 <li class="list-group-item">
             Players:
             <!-- <li>
-              <div class="spinner-border" role="status"  >
+              <div class="spinner-border" role="status" >
                 <span class="visually-hidden">Loading...</span>
               </div>
-            </li> -->
-            
+            </li>  -->
+           
+           
             <li class="list-group-item"  *ngFor="let player of players" [value]="player.id" >
               {{ player.name }}
             </li></ul>

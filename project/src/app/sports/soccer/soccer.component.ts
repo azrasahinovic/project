@@ -133,11 +133,16 @@ export class SoccerComponent implements OnInit {
     }
     console.log(this.selectedCompetitor);
   }
+  // timeout(ms: number) { //pass a time in milliseconds to this function
+  //   return new Promise(resolve => setTimeout(resolve, 1000));
+  // }
     
     getPlayersForCompetitor(competitor: string) {
-    this.sportService.getPlayersForCompetitors(competitor).subscribe(
+    this.sportService.getPlayersForCompetitors(competitor).subscribe( 
+     
       players => {
       this.players = players;
+    
       this.show = this.players == null || this.players.length === 0;
       this.message = 'No players found!';
     },
