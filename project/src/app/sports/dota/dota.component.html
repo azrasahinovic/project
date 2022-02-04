@@ -63,12 +63,25 @@
             (click)="open(content, 'competitor')">Edit</button>
 
         </div>
-        <div class="col gx-3" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
-            <ul class="list-group">
-                <li class="list-group-item">
-            Players:
+
+        <div class="col gx-3">
+           <label for="players">
+             Players:
+           </label>
+           <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner>
+  
+            </app-loading-spinner>
+          </div>
+
+           <ul class="list-group" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
+            
+
             <li class="list-group-item" *ngFor="let player of players" [value]="player.id" >
-               {{ player.name }}
+               <div *ngIf="!isLoading">
+                 {{ player.name }}
+               </div>
+              
             </li></ul>
         </div>
 

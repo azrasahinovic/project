@@ -33,6 +33,8 @@ export class LolComponent implements OnInit {
   closeResult!: string;
   selectedEditType = '';
 
+  isLoading: boolean = false;
+
 
   constructor(private sportService: SportService,
               private modalService: NgbModal) { }
@@ -155,9 +157,11 @@ export class LolComponent implements OnInit {
   }
     
     getPlayersForCompetitor(competitor: string) {
+      this.isLoading = true;
     this.sportService.getPlayersForCompetitors(competitor).subscribe(
       players => {
       this.players = players;
+      this.isLoading = false;
       this.show = this.players == null || this.players.length === 0;
       this.message = 'No players found!';
     },

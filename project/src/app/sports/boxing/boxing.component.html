@@ -43,12 +43,27 @@
         
       
     
-        <div class="col-md-4 gx-3" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
-            <ul class="list-group">
-                <li class="list-group-item">
-            Competitors:
-            <li class="list-group-item" *ngFor="let competitor of competitors" [value]="competitor.id" >
-               {{ competitor.name }}
+        <div class="col-md-4 gx-3">
+
+           <label class="form-control"
+           for="competitors">
+              Competitors:
+           </label>
+           
+           <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner>
+  
+            </app-loading-spinner>
+          </div>
+
+             <ul class="list-group"  style="height: 600px; overflow-y: auto; overflow-x: hidden;">
+               
+            <li class="list-group-item"
+             *ngFor="let competitor of competitors" [value]="competitor.id" >
+               <div *ngIf="!isLoading">
+                  {{ competitor.name }}
+               </div>
+             
             </li></ul>
         </div>
 

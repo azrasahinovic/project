@@ -29,6 +29,8 @@ export class BoxingComponent implements OnInit {
   closeResult!: string;
   selectedEditType = '';
 
+  isLoading: boolean = false;
+
 
   constructor(private sportService: SportService,
               private modalService: NgbModal) { }
@@ -96,9 +98,11 @@ export class BoxingComponent implements OnInit {
     }
   }
   getCompetitorsForCompetition(competition: string) {
+    this.isLoading = true;
   this.sportService.getCompetitorsForCompetitions(competition).subscribe(
     competitors => {
       this.competitors = competitors;
+      this.isLoading = false;
       this.show = this.competitors == null || this.competitors.length === 0;
       this.message = 'No competitors found!';
     },
