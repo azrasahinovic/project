@@ -21,6 +21,7 @@ import { DotaComponent } from './sports/dota/dota.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingSpinnerComponent } from './sports/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CounterComponent,
     LolComponent,
     DotaComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

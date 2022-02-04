@@ -8,12 +8,14 @@
 <ng-container
  *ngIf="selectedSport"
  >
+
     <h5 >{{selectedSport.name}}</h5>
     <app-soccer *ngIf="selectedSport.id === '1'"></app-soccer>
     <app-boxing *ngIf="selectedSport.id === '10'"></app-boxing>
     <app-counter *ngIf="selectedSport.id === '109'"></app-counter>
     <app-lol *ngIf="selectedSport.id === '110'"></app-lol>
     <app-dota *ngIf="selectedSport.id === '111'"></app-dota>
+
 </ng-container>
 </li>
 
