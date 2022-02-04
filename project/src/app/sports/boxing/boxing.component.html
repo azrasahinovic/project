@@ -18,7 +18,7 @@
                        name: {{ selectedCategory?.name }}
                         </li>
                 </ul>
-                <button class="btn btn-primary " 
+                <button class="btn btn-dark " 
                 *ngIf="selectedCategory" 
                 (click)="open(content, 'category')">Edit</button>
         </div>
@@ -36,7 +36,7 @@
                    name: {{ selectedCompetition?.name }}
                     </li>
             </ul>
-            <button class="btn btn-primary " 
+            <button class="btn btn-dark " 
             *ngIf="selectedCompetition" 
             (click)="open(content, 'competition')">Edit</button>
     </div>
