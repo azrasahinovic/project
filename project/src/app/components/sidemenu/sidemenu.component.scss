@@ -16,22 +16,21 @@
 //     cursor: pointer;
 // }
 
-.d-inline-block {
+
+// .list-group {
+//     margin-bottom: 10px;
+// }
+
+
+.container {
  margin: 30px;
-}
-
-.list-group {
-    margin-bottom: 10px;
-}
-
-.btn {
-    margin-bottom: 5px;
 }
 
 ngb-toast {
     margin: auto;
     margin-bottom: 20px;
 }
+
 
 //dropdown button
 @keyframes TransitioningBackground {
@@ -113,7 +112,8 @@ option {
 
 option:hover {
   background-color: black;
-  color: white
+  color: white;
+  cursor: pointer;
 }
 
 

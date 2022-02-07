@@ -1,7 +1,17 @@
 
 <div class="container">
+  <ngb-toast
+  *ngIf="show"
+  [delay]="10000">
+  <div *ngIf="showErrorMessage">
+    {{errorMessage}}
+  </div>
+
+   {{message}}
+ </ngb-toast>
+</div>
     <div class="row">
-            <div class="col-md-3 gx-3">
+            <div class="col-sm-12 col-md-6 col-lg-3 gx-3">
                 <div ngbDropdown placement="top-right" class="d-inline-block" 
                 (click)="selectCategory($event)" 
                  ngDefaultControl >
@@ -25,7 +35,7 @@
                     (click)="open(content, 'category')">Edit</button>
 
         </div>
-        <div class="col-md-3 gx-3">
+        <div class="col-sm-12 col-md-6 col-lg-3 gx-3">
             <div ngbDropdown placement="top-right" class="d-inline-block" 
             (click)="selectCompetition($event)"
             ngDefaultControl>
@@ -47,7 +57,7 @@
            
     </div>
         
-        <div class="col-md-3 gx-3">
+        <div class="col-sm-12 col-md-6 col-lg-3 gx-3">
             <div ngbDropdown placement="top-right" class="d-inline-block" (click)="selectCompetitor($event)"  ngDefaultControl>
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [disabled]="!selectedCompetition">Select Competitor</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="height: 190px; overflow-y: auto; overflow-x: hidden;">
@@ -91,17 +101,6 @@
              
             </li></ul>
         </div>
-</div>
-     
-<ngb-toast
-  *ngIf="show"
-  [delay]="10000">
-  <div *ngIf="showErrorMessage">
-    {{errorMessage}}
-  </div>
-
-   {{message}}
- </ngb-toast>
 </div>
 
 <ng-template #content let-modal>
