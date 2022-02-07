@@ -17,7 +17,7 @@
     <app-dota *ngIf="selectedSport.id === '111'"></app-dota> -->
 
 
-    <app-sport-component></app-sport-component>
+    <app-sport-component *ngIf="selectedSport" [selectedSport]="selectedSport"></app-sport-component>
 
 </ng-container>
 </li>

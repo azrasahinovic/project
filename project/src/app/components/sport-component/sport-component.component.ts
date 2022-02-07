@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
 import { Sport } from 'src/app/Sport';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
@@ -9,7 +9,8 @@ import { ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './sport-component.component.html',
   styleUrls: ['./sport-component.component.scss']
 })
-export class SportComponentComponent implements OnInit {
+export class SportComponentComponent implements OnChanges{
+ 
   sport!: Sport[];
   category!: Category;
  
@@ -23,7 +24,8 @@ export class SportComponentComponent implements OnInit {
   competitor!: Competitor[];
   players!: Player[];
   selectedPlayers: any;
-  selectedSport: any;
+  
+  @Input() selectedSport: any;
 
   
   show: boolean = false;
@@ -41,7 +43,7 @@ export class SportComponentComponent implements OnInit {
   constructor(private sportService: SportService,
               private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.sportService
     .getCategoriesForSport(this.selectedSport.id)
     .subscribe(
@@ -55,7 +57,16 @@ export class SportComponentComponent implements OnInit {
         this.errorMessage = 'Something went wrong!';
         console.error(error);
       }
+     
     ); 
+    if (this.selectedSport) {
+      this.selectedCategory = null;
+      this.selectedCompetition = null;
+      this.selectedCompetitor = null;
+      this.competitions = [];
+      this.competitors = [];
+      this.players = [];
+    }
   }
 
   selectCategory(event: any) {

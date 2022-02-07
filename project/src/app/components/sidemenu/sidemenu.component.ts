@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Sport } from 'src/app/Sport';
+import { Competition, Competitor, Player, Sport } from 'src/app/Sport';
 import { SportService } from 'src/app/services/sport.service';
 import { filter } from 'rxjs';
 
@@ -13,6 +13,13 @@ import { filter } from 'rxjs';
 export class SidemenuComponent implements OnInit {
   sport!: Sport[];
   selectedSport: any;
+  selectedCategory: any;
+  selectedCompetition: any;
+  selectedCompetitor: any;
+  competitions!: Competition[];
+  competitors!: Competitor[];
+  players!: Player[];
+
   
 
   sports: Sport[] = [];
@@ -37,6 +44,8 @@ export class SidemenuComponent implements OnInit {
     this.selectedSport = this.sports.find(
       el => el.id === event.target.value
     );
+
+    
    
   }
 }
