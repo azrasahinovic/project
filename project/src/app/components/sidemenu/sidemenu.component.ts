@@ -12,6 +12,7 @@ import { filter } from 'rxjs';
 })
 export class SidemenuComponent implements OnInit {
   sport!: Sport[];
+  selectedSport: any;
   
 
   sports: Sport[] = [];
@@ -22,7 +23,7 @@ export class SidemenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.sportService.getSports().subscribe((sports) => (
-      this.sports = sports.slice(0,5)));
+      this.sports = sports));
   }
 
   onSelect(sport: any) {
@@ -30,5 +31,12 @@ export class SidemenuComponent implements OnInit {
     sport.active = true;
     this.select.emit(sport);
     console.log(sport)
+  }
+
+  selectSport(event:any) {
+    this.selectedSport = this.sports.find(
+      el => el.id === event.target.value
+    );
+   
   }
 }

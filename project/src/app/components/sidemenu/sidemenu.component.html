@@ -1,7 +1,7 @@
 
-<ul class="list-group" id="list-tab" role="tablist">
+<!-- <ul class="list-group" id="list-tab" role="tablist">
     <li class="list-group-item ">
-<h3>List of sports:</h3>
+<h4>List of sports:</h4>
 
     <div *ngFor="let sport of sports" (click)="onSelect(sport)" [class.active]="sport.active" 
     >
@@ -9,5 +9,19 @@
     <span> {{ sport.name }} </span>
     </li>
 </div>
-</ul>
+</ul> -->
 
+<div class="container">
+
+    <div ngbDropdown class="d-inline-block" 
+    (click)="selectSport($event)" 
+     ngDefaultControl >
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle
+         >Select Sport</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" 
+        style="height: 190px; overflow-y: auto; overflow-x: hidden;">
+            <option  *ngFor="let sport of sports" (click)="onSelect(sport)" [value]="sport.id" 
+            >{{ sport.name }}</option>
+        </div>
+      </div>
+    </div>

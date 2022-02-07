@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingSpinnerComponent } from './sports/loading-spinner/loading-spinner.component';
+import { SportComponentComponent } from './components/sport-component/sport-component.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoadingSpinnerComponent } from './sports/loading-spinner/loading-spinne
     CounterComponent,
     LolComponent,
     DotaComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    SportComponentComponent
   ],
   imports: [
     BrowserModule,
