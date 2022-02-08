@@ -1,0 +1,8 @@
+<p-panel header="Selected sport: {{selectedSport?.name}}">
+<div class="container">
+  
+    <app-sport-component *ngIf="selectedSport" [selectedSport]="selectedSport"></app-sport-component>
+</div>
+    
+</p-panel>
+

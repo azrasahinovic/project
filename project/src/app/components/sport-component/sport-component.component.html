@@ -1,0 +1,113 @@
+<p-toast position="top-left"
+     *ngIf="show"
+     >
+     <div *ngIf="showErrorMessage">
+       {{errorMessage}}
+     </div>
+   
+      {{message}}
+</p-toast>
+
+<div class="row">
+     <div class="col-md-4 gx-3" >
+          <p-dropdown [options]="categories" 
+          (onChange)="selectCategory($event)"
+     [(ngModel)]="selectedCategory" 
+     placeholder="Select Category" 
+     optionLabel="name" 
+	 [showClear]="true">
+           </p-dropdown>  
+          <div *ngIf="selectedCategory">
+               <span class="p-float-label">
+               <input id="float-input" type="text" pInputText disabled> 
+               <label for="float-input" >
+                   id: {{selectedCategory.id}}
+               </label>
+           </span>
+           <span class="p-float-label">
+               <input id="float-input" type="text" pInputText disabled> 
+               <label for="float-input">
+                     name: {{selectedCategory.name}}
+               </label>
+           </span>
+          </div>
+           
+
+     </div>
+     <div class="col-md-4 gx-3">
+          <p-dropdown  [options]="competitions" 
+          (onChange)="selectCompetition($event)"
+     [(ngModel)]="selectedCompetition" 
+     placeholder="Select Competition" 
+     optionLabel="name" 
+	 [showClear]="true">
+           </p-dropdown>
+
+           <div *ngIf="selectedCompetition">
+               <span class="p-float-label">
+               <input id="float-input" type="text" pInputText disabled> 
+               <label for="float-input">
+                   id: {{selectedCompetition.id}}
+               </label>
+           </span>
+           <span class="p-float-label">
+               <input id="float-input" type="text" pInputText disabled> 
+               <label for="float-input">
+                     name: {{selectedCompetition.name}}
+               </label>
+           </span>
+          </div>
+     </div>
+     <div class="col-md-4 gx-3">
+          <p-dropdown [options]="competitors" 
+          (onChange)="selectCompetitor($event)"
+     [(ngModel)]="selectedCompetitor" 
+     placeholder="Select Competitor" 
+     optionLabel="name" 
+	 [showClear]="true">
+           </p-dropdown>
+
+           <div *ngIf="selectedCompetitor">
+               <span class="p-float-label">
+               <input id="float-input" type="text" pInputText disabled> 
+               <label for="float-input">
+                   id: {{selectedCompetitor.id}}
+               </label>
+           </span>
+           <span class="p-float-label">
+               <input id="float-input" type="text" pInputText disabled> 
+               <label for="float-input">
+                     name: {{selectedCompetitor.name}}
+               </label>
+           </span>
+          </div>
+
+ </div>
+ </div>
+ <div class="row">
+<div *ngIf="selectedCompetitor">
+               <span class="p-float-label">
+                    <input id="float-input" type="text" pInputText disabled> 
+                    <label for="float-input">
+                       Players:
+                     </label>
+               </span>
+               <span class="p-float-label"
+                *ngFor="let player of players" >
+                    <input id="float-input" type="text" pInputText disabled> 
+                    <label for="float-input">
+                       {{player.name}}
+                     </label>
+               </span>
+          </div>
+ </div>
+
+      
+   
+ 
+
+      
+
+
+
+

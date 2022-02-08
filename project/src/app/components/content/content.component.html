@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-md-3">
+        <app-sidemenu (select)="selSport($event)"></app-sidemenu>
+    </div>
+    <div class="col">
+        <app-sport-content [selectedSport]="selectedSport"></app-sport-content>
+    </div>
+</div>
