@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { throwIfEmpty } from 'rxjs';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
@@ -29,10 +29,14 @@ export class SportComponentComponent implements OnChanges {
   showErrorMessage!: boolean;
   errorMessage!: string;
 
+  isLoading: boolean = false;
+
   constructor(private sportService: SportService,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private primengConfig: PrimeNGConfig) { }
 
   ngOnChanges(): void {
+    this.primengConfig.ripple = true;
     this.sportService
     .getCategoriesForSport(this.selectedSport.id)
     .subscribe(
@@ -61,6 +65,7 @@ export class SportComponentComponent implements OnChanges {
       this.competitors = [];
       this.players = [];
     }
+    this.primengConfig.ripple = true;
   }
 
   selectCategory(event: any) {
@@ -78,10 +83,13 @@ export class SportComponentComponent implements OnChanges {
       }
     }
     
+    
       getCompetitionsForCategory(category: string) {
+        
         this.sportService.getCompetitionsForCategories(category).subscribe(
           (competitions) => {
       this.competitions = competitions;
+      
 
       if(this.competitions == null || this.competitions.length === 0) {
         this.messageService.add(
@@ -149,12 +157,14 @@ export class SportComponentComponent implements OnChanges {
 
 
     getPlayersForCompetitor(competitor: string) {
+      this.isLoading = true;
       
     this.sportService.getPlayersForCompetitors(competitor).subscribe( 
       
       players => {
       
       this.players = players;
+      this.isLoading = false;
      
     
     //   this.show = this.players == null || this.players.length === 0;
