@@ -1,4 +1,4 @@
-<p-panel header="Selected sport: {{selectedSport?.name}}">
+<p-panel header="Selected sport: {{selectedSport?.name.toUpperCase()}}">
 <div class="container">
   
     <app-sport-component *ngIf="selectedSport" [selectedSport]="selectedSport"></app-sport-component>
