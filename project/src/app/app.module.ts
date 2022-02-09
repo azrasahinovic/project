@@ -19,6 +19,7 @@ import { SportComponentComponent } from './components/sport-component/sport-comp
 import {OrderListModule} from 'primeng/orderlist';
 import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,7 @@ import {ToastModule} from 'primeng/toast';
     InputTextModule,
     ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

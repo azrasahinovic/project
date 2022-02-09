@@ -1,4 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { throwIfEmpty } from 'rxjs';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 
@@ -27,7 +29,8 @@ export class SportComponentComponent implements OnChanges {
   showErrorMessage!: boolean;
   errorMessage!: string;
 
-  constructor(private sportService: SportService) { }
+  constructor(private sportService: SportService,
+    private messageService: MessageService) { }
 
   ngOnChanges(): void {
     this.sportService
@@ -35,16 +38,21 @@ export class SportComponentComponent implements OnChanges {
     .subscribe(
       (categories) => {
         this.categories = categories.sort((a, b) => a.name.localeCompare(b.name));
-        this.show = this.categories == null || this.categories.length === 0;
-        this.message = 'No categories found!';
+        if(this.categories == null || this.categories.length === 0) {
+          this.messageService.add(
+            {
+            severity:'warn', 
+            detail:'No categories found!'});
+        }
+        
       },
       (error) => {
-        this.showErrorMessage = true;
-        this.errorMessage = 'Something went wrong!';
-        console.error(error);
-      }
-     
-    ); 
+        this.messageService.add(
+          {
+          severity:'error', 
+          summary:'Error',
+          detail:'Something went wrong!!'});
+      });
     if (this.selectedSport) {
       this.selectedCategory = null;
       this.selectedCompetition = null;
@@ -74,13 +82,21 @@ export class SportComponentComponent implements OnChanges {
         this.sportService.getCompetitionsForCategories(category).subscribe(
           (competitions) => {
       this.competitions = competitions;
-      this.show = this.competitions == null || this.competitions.length === 0;
-      this.message = 'No competitions found!';
+
+      if(this.competitions == null || this.competitions.length === 0) {
+        this.messageService.add(
+          {
+          severity:'warn', 
+          detail:'No competitions found!'});
+      }
+      
     },
     (error) => {
-      this.showErrorMessage = true;
-      this.errorMessage = 'Something went wrong!';
-      console.error(error);
+      this.messageService.add(
+        {
+        severity:'error', 
+        summary:'Error',
+        detail:'Something went wrong!!'});
     });
     console.log(this.selectedCategory);
     }
@@ -101,15 +117,21 @@ export class SportComponentComponent implements OnChanges {
     this.sportService.getCompetitorsForCompetitions(competition).subscribe(
       competitors => {
         this.competitors = competitors;
-        this.show = this.competitors == null || this.competitors.length === 0;
-        this.message = 'No competitors found!';
+        if(this.competitors == null || this.competitors.length === 0) {
+          this.messageService.add(
+            {
+            severity:'warn', 
+            detail:'No competitors found!'});
+        }
+        
       },
       (error) => {
-        this.showErrorMessage = true;
-        this.errorMessage = 'Something went wrong!';
-        console.error(error);
-      }
-      )
+        this.messageService.add(
+          {
+          severity:'error', 
+          summary:'Error',
+          detail:'Something went wrong!!'});
+      });
     
       console.log(this.selectedCompetition);
   }
@@ -135,14 +157,35 @@ export class SportComponentComponent implements OnChanges {
       this.players = players;
      
     
-      this.show = this.players == null || this.players.length === 0;
-      this.message = 'No players found!';
-    },
-    (error) => {
-      this.showErrorMessage = true;
-      this.errorMessage = 'Something went wrong!!';
-      console.error(error);
-    })
+    //   this.show = this.players == null || this.players.length === 0;
+    //   this.message = 'No players found!';
+    // },
+    // (error) => {
+    //   this.showErrorMessage = true;
+    //   this.errorMessage = 'Something went wrong!!';
+    //   console.error(error);
+    // })
+
+  // })}
+  if(this.players == null || this.players.length === 0) {
+    this.messageService.add(
+      {
+      severity:'warn', 
+      detail:'No players found!'});
   }
+  
+},
+(error) => {
+  this.messageService.add(
+    {
+    severity:'error', 
+    summary:'Error',
+    detail:'Something went wrong!!'});
+});
+    }
+
+
+
+ 
   
 }
