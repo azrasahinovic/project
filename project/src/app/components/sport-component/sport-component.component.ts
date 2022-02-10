@@ -193,9 +193,4 @@ export class SportComponentComponent implements OnChanges {
     detail:'Something went wrong!!'});
 });
     }
-
-
-
- 
-  
 }
