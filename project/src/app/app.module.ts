@@ -22,6 +22,11 @@ import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import {RippleModule} from 'primeng/ripple';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import {TableModule} from 'primeng/table';
+import { LoginComponent } from './components/login/login.component';
+import {CardModule} from 'primeng/card';
+import {SlideMenuModule} from 'primeng/slidemenu';
+import {MenuItem} from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,9 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     SidemenuComponent,
     SportContentComponent,
     SportComponentComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    LoginComponent,
+
   
     
   ],
@@ -48,7 +55,13 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     OrderListModule,
     InputTextModule,
     ToastModule,
-    RippleModule
+    RippleModule,
+    TableModule,
+    CardModule,
+    SlideMenuModule,
+    
+
+   
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

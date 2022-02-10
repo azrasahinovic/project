@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem, PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  items!: MenuItem[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.items = [
+      {
+        label:'Log out',
+        url: 'http://localhost:4200/'
+      }
+    ]
+   
   }
 
 }
