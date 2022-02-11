@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { LoginService, User } from 'src/app/services/login.service';
 
 
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
  password: string = '';
 
   constructor(private loginService: LoginService,
-    private router: Router) { }
+    private router: Router,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {}
 
@@ -30,7 +32,23 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('mfcToken', tokenObject.token);
       this.router.navigate(['/home']);
     });
+    if(this.username !== 'support') {
+      this.messageService.add(
+        {
+        severity:'error', 
+        summary:'Error',
+        detail:`The username you've entered is incorrect!`});
+    }
+    if (this.password !== 'TNTsoft2017') {
+      this.messageService.add(
+        {
+        severity:'error', 
+        summary:'Error',
+        detail:`The password you've entered is incorrect!`});
+    }
+
+    }
     }
     
   }
-}
+

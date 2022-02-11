@@ -1,18 +1,32 @@
 <div class="p-grid p-align-center" style="height: 100vh">
+  <p-toast position="top-right"></p-toast>
     <div class="p-col-6" style="text-align: center"> 
     </div>
     <div class="p-col-6" style="background-color: #f1f1f2; height: 100%;">
       <div>
         <form>
-             <div class="container"> <label >Username:</label>
+             <div class="container"> 
             <span class="p-float-label ">  
-            <input  type="text" pInputText [(ngModel)]="username"  [ngModelOptions]="{standalone: true}" >  
+            <input  type="text" pInputText
+            placeholder="Username"
+             [(ngModel)]="username" 
+              [ngModelOptions]="{standalone: true}"
+              required >  
         </span>
-         <label >Password:</label>
-        <span class="p-float-label">
-            <input  type="password" pInputText [(ngModel)]="password"  [ngModelOptions]="{standalone: true}"> 
+       
+        <span class="p-float-label mt-4">
+            <input  type="password" pInputText 
+            placeholder="Password"
+            [(ngModel)]="password" 
+            [ngModelOptions]="{standalone: true}"
+            required
+            minlength="6"> 
         </span>    
-        <button type="submit" class="btn btn-primary mt-4" (click)="login()">Login</button>
+        <button
+        [disabled]="!username || !password"
+         type="submit" class="btn btn-primary mt-4" 
+        (click)="login()"
+        >Login</button>
         </div> 
         </form>
       </div>
