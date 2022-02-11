@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService, User } from 'src/app/services/login.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,17 +10,27 @@ import { LoginService, User } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user!: User[];
- 
+ username: string = '';
+ password: string = '';
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService,
+    private router: Router) { }
 
-  ngOnInit(): void {
-    this.loginService.login(user).subscribe(
-      user => this.user = user
-    )
+  ngOnInit(): void {}
+
+  login() {
+    if (this.username && this.password) {
+      const user: User = {
+        username: this.username,
+        password: this.password
+      }
+      console.log(user);
+      
+      this.loginService.login(user).subscribe(tokenObject => {
+      localStorage.setItem('mfcToken', tokenObject.token);
+      this.router.navigate(['/home']);
+    });
+    }
+    
   }
-
- 
-
 }

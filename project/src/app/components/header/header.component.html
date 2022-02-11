@@ -17,7 +17,7 @@
       <div class="image">
         <img src='https://www.district158.org/hms/wp-content/uploads/sites/20/2019/10/Sports2-265.jpg' alt=''>
      <div >
-         <p-slideMenu #menu [model]="items" [popup]="true"></p-slideMenu>
+         <p-slideMenu #menu [model]="items" [popup]="true" (click)="logout()"></p-slideMenu>
     <button #btn type="button" pButton icon="pi pi-list"  (click)="menu.toggle($event)" style="float:right"></button>
       </div>
       </div>

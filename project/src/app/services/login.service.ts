@@ -19,7 +19,4 @@ export class LoginService {
   login(user: User): Observable<any>{
     return this.http.post<any>('http://identity.multifeedcenter.com/api/Authenticate', user);
   }
-
-
-
 }

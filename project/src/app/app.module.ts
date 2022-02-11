@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,9 @@ import { LoginComponent } from './components/login/login.component';
 import {CardModule} from 'primeng/card';
 import {SlideMenuModule} from 'primeng/slidemenu';
 import {MenuItem} from 'primeng/api';
+import { SportService } from './services/sport.service';
+import { AuthInterceptor } from './services/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +66,9 @@ import {MenuItem} from 'primeng/api';
 
    
   ],
-  providers: [MessageService],
+  providers: [MessageService, 
+    SportService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
