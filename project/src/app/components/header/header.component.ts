@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
-        label:'Log out',
+        label:'Logout',
         url: 'http://localhost:4200/'
       }
     ]

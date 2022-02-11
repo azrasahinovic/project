@@ -36,7 +36,7 @@ export class SportComponentComponent implements OnChanges {
     private primengConfig: PrimeNGConfig) { }
 
   ngOnChanges(): void {
-    this.primengConfig.ripple = true;
+    
     this.sportService
     .getCategoriesForSport(this.selectedSport.id)
     .subscribe(
