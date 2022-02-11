@@ -29,6 +29,7 @@ import {SlideMenuModule} from 'primeng/slidemenu';
 import {MenuItem} from 'primeng/api';
 import { SportService } from './services/sport.service';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
    
   ],
   providers: [MessageService, 
-    SportService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    SportService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
