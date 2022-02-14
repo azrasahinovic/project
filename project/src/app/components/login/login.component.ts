@@ -30,25 +30,17 @@ export class LoginComponent implements OnInit {
       
       this.loginService.login(user).subscribe(tokenObject => {
       localStorage.setItem('mfcToken', tokenObject.token);
-      this.router.navigate(['/home']);
-    });
-    if(this.username !== 'support') {
-      this.messageService.add(
-        {
-        severity:'error', 
-        summary:'Error',
-        detail:`The username you've entered is incorrect!`});
-    }
-    if (this.password !== 'TNTsoft2017') {
-      this.messageService.add(
-        {
-        severity:'error', 
-        summary:'Error',
-        detail:`The password you've entered is incorrect!`});
-    }
-
-    }
-    }
-    
+      this.router.navigate(['/home'])
+    },
+    error => this.messageService.add({
+      severity: 'error',
+      summary: 'Error', 
+      detail:`The username/password you've entered is incorrect!`
+    })
+    );
   }
+    
+}
+    
+}
 

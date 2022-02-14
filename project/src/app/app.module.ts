@@ -30,6 +30,8 @@ import {MenuItem} from 'primeng/api';
 import { SportService } from './services/sport.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthGuard } from './services/auth.guard';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -63,13 +65,15 @@ import { AuthGuard } from './services/auth.guard';
     TableModule,
     CardModule,
     SlideMenuModule,
+    ConfirmDialogModule
     
 
    
   ],
   providers: [MessageService, 
     SportService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    AuthGuard
+    AuthGuard,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

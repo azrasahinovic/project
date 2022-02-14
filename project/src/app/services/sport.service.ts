@@ -45,7 +45,7 @@ export class SportService {
   }
 
   editCategory(category: Category): Observable<Category>  {
-    const url = `https://devmeta.multifeedcenter.com/Category/update/${category.id}`;
+    const url = (`https://devmeta.multifeedcenter.com/Category/update/${category.id}`);
     return this.http.put<Category>(url, category, httpOptions);
   }
 

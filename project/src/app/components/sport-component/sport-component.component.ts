@@ -1,8 +1,9 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { throwIfEmpty } from 'rxjs';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
+
 
 @Component({
   selector: 'app-sport-component',
@@ -33,7 +34,9 @@ export class SportComponentComponent implements OnChanges {
 
   constructor(private sportService: SportService,
     private messageService: MessageService,
-    private primengConfig: PrimeNGConfig) { }
+    private primengConfig: PrimeNGConfig,
+    private confirmationService: ConfirmationService
+    ) { }
 
   ngOnChanges(): void {
     
@@ -193,5 +196,14 @@ export class SportComponentComponent implements OnChanges {
     detail:'Something went wrong!!'});
 });
     }
+
+    confirm() {
+      this.confirmationService.confirm({
+          message:'Edit Category name:' ,
+          accept: () => {
+              //Actual logic to perform a confirmation
+          }
+      });
+  }
 
 }

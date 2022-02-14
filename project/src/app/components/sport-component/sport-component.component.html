@@ -21,7 +21,11 @@
                </label>
            </span>
          
-           <!-- <button pButton type="button" label="Edit" ></button> -->
+           <button pButton 
+           class="button mt-2" 
+           type="button" 
+           (click)="confirm()"
+           label="Edit" ></button>
           </div> 
              
 
@@ -105,12 +109,7 @@
           </div>
  </div>
 
-      
-   
- 
-
-      
-
-
-
-
+ <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}"
+ header="Update">
+ <input id="name" name="name" class="form-control" [(ngModel)]="selectedCategory.name">
+</p-confirmDialog>
