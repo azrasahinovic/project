@@ -24,12 +24,10 @@
            <button pButton 
            class="button mt-2" 
            type="button" 
-           (click)="showDialog()"
-           label="Edit" ></button>
+           (click)="showDialog(category)"
+           label="Edit" >
+           </button>
           </div> 
-             
-
-        
 
      </div>
      <div class="col-md-4 gx-3">
@@ -54,7 +52,14 @@
                      name: 
                </label>
            </span>
+           <button pButton 
+           class="button mt-2" 
+           type="button" 
+           (click)="showDialog(competition)"
+           label="Edit" >
+           </button>
           </div>
+          
      </div>
      <div class="col-md-4 gx-3">
           <p-dropdown [options]="competitors" 
@@ -78,6 +83,12 @@
                      name: 
                </label>
            </span>
+           <button pButton 
+           class="button mt-2" 
+           type="button" 
+           (click)="showDialog(competitor)"
+           label="Edit" >
+           </button>
           </div>
 
  </div>
@@ -113,11 +124,28 @@
     <ng-template pTemplate="header">
        Update
     </ng-template>
+    <ng-template *ngIf="selectedEditType === 'category'" >
     <label>Edit name:</label>
     <br>
     <input type="text"  pInputText [(ngModel)]="selectedCategory.name">
+    </ng-template>
+    <ng-template *ngIf="selectedEditType === 'competition'" >
+        <label>Edit name:</label>
+        <br>
+        <input type="text"  pInputText [(ngModel)]="selectedCompetition.name">
+    </ng-template>
+    <ng-template *ngIf="selectedEditType === 'competitor'" >
+        <label>Edit name:</label>
+        <br>
+        <input type="text"  pInputText [(ngModel)]="selectedCompetitor.name">
+        </ng-template>
+    
     <ng-template pTemplate="footer">
-        <button type="button" pButton icon="pi pi-times" label="No" ></button>
-        <button type="button" pButton icon="pi pi-check" label="Yes" ></button>
+        <button id="cancel" type="reset" pButton icon="pi pi-times" label="Close" 
+        (click)="close()"
+        ></button>
+        <button type="button" pButton icon="pi pi-check" label="Save"
+        (click)="save()"
+        ></button>
     </ng-template>
 </p-dialog>

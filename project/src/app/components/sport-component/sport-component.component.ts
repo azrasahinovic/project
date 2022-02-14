@@ -34,6 +34,8 @@ export class SportComponentComponent implements OnChanges {
 
   display: boolean = false;
 
+  selectedEditType = '';
+
   constructor(private sportService: SportService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
@@ -199,8 +201,19 @@ export class SportComponentComponent implements OnChanges {
 });
     }
 
-    showDialog() {
+    showDialog(type: string) {
+      this.selectedEditType = type;
       this.display = true;
+      this.selectedEditType = '';
+      
+  }
+
+  close() {
+    this.display = false;
+  }
+
+  save() {
+
   }
 
 }
