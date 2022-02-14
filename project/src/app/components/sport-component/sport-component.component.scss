@@ -8,6 +8,14 @@
     margin-bottom: 10px;
 }
 
-button {
-    margin-bottom: 10px;
+ng:deep .categories {
+margin: 20px;
+}
+
+ng:deep p-float-label {
+    justify-content: center;
+}
+
+app-loading-spinner {
+    margin-left: 55px;
 }

@@ -45,17 +45,17 @@ export class SportService {
   }
 
   editCategory(category: Category): Observable<Category>  {
-    const url = (`https://devmeta.multifeedcenter.com/Category/update/${category.id}`);
+    const url = (`https://devmeta.multifeedcenter.com/Category/update/`);
     return this.http.put<Category>(url, category, httpOptions);
   }
 
   editCompetition(competition: Competition): Observable<Competition>  {
-    const url = `https://devmeta.multifeedcenter.com/Competition/update/${competition.id}`;
+    const url = `https://devmeta.multifeedcenter.com/Competition/update/`;
     return this.http.put<Competition>(url, competition, httpOptions);
   }
 
   editCompetitor(competitor: Competitor): Observable<Competitor>  {
-    const url = `https://devmeta.multifeedcenter.com/Competitor/update/${competitor.id}`;
+    const url = `https://devmeta.multifeedcenter.com/Competitor/update/`;
     return this.http.put<Competitor>(url, competitor, httpOptions);
   }
 }
