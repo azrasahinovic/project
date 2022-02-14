@@ -30,8 +30,8 @@ import {MenuItem} from 'primeng/api';
 import { SportService } from './services/sport.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthGuard } from './services/auth.guard';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import {ConfirmationService} from 'primeng/api';
     TableModule,
     CardModule,
     SlideMenuModule,
-    ConfirmDialogModule
+    DialogModule
     
 
    

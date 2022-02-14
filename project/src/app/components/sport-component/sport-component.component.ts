@@ -32,6 +32,8 @@ export class SportComponentComponent implements OnChanges {
 
   isLoading: boolean = false;
 
+  display: boolean = false;
+
   constructor(private sportService: SportService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
@@ -197,13 +199,8 @@ export class SportComponentComponent implements OnChanges {
 });
     }
 
-    confirm() {
-      this.confirmationService.confirm({
-          message:'Edit Category name:' ,
-          accept: () => {
-              //Actual logic to perform a confirmation
-          }
-      });
+    showDialog() {
+      this.display = true;
   }
 
 }
