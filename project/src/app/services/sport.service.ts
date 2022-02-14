@@ -50,12 +50,12 @@ export class SportService {
   }
 
   editCompetition(competition: Competition): Observable<Competition>  {
-    const url = `.../${competition.id}`;
+    const url = `https://devmeta.multifeedcenter.com/Competition/update/${competition.id}`;
     return this.http.put<Competition>(url, competition, httpOptions);
   }
 
   editCompetitor(competitor: Competitor): Observable<Competitor>  {
-    const url = `.../${competitor.id}`;
+    const url = `https://devmeta.multifeedcenter.com/Competitor/update/${competitor.id}`;
     return this.http.put<Competitor>(url, competitor, httpOptions);
   }
 }

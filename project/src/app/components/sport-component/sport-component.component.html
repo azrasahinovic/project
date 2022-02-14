@@ -24,7 +24,7 @@
            <button pButton 
            class="button mt-2" 
            type="button" 
-           (click)="showDialog(category)"
+           (click)="showDialog('category')"
            label="Edit" >
            </button>
           </div> 
@@ -55,7 +55,7 @@
            <button pButton 
            class="button mt-2" 
            type="button" 
-           (click)="showDialog(competition)"
+           (click)="showDialog('competition')"
            label="Edit" >
            </button>
           </div>
@@ -86,7 +86,7 @@
            <button pButton 
            class="button mt-2" 
            type="button" 
-           (click)="showDialog(competitor)"
+           (click)="showDialog('competitor')"
            label="Edit" >
            </button>
           </div>
@@ -124,21 +124,21 @@
     <ng-template pTemplate="header">
        Update
     </ng-template>
-    <ng-template *ngIf="selectedEditType === 'category'" >
+    <ng-container *ngIf="selectedEditType === 'category'" >
     <label>Edit name:</label>
     <br>
     <input type="text"  pInputText [(ngModel)]="selectedCategory.name">
-    </ng-template>
-    <ng-template *ngIf="selectedEditType === 'competition'" >
+    </ng-container>
+    <ng-container *ngIf="selectedEditType === 'competition'" >
         <label>Edit name:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCompetition.name">
-    </ng-template>
-    <ng-template *ngIf="selectedEditType === 'competitor'" >
+    </ng-container>
+    <ng-container *ngIf="selectedEditType === 'competitor'" >
         <label>Edit name:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCompetitor.name">
-        </ng-template>
+        </ng-container>
     
     <ng-template pTemplate="footer">
         <button id="cancel" type="reset" pButton icon="pi pi-times" label="Close" 

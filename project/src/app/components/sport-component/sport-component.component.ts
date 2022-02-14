@@ -1,9 +1,9 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { throwIfEmpty } from 'rxjs';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
-
 
 @Component({
   selector: 'app-sport-component',
@@ -12,6 +12,7 @@ import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 })
 export class SportComponentComponent implements OnChanges {
   categories!: Category[];
+  category!: Category;
   
   competition!: Competition;
   competitions!: Competition[];
@@ -35,11 +36,13 @@ export class SportComponentComponent implements OnChanges {
   display: boolean = false;
 
   selectedEditType = '';
+ 
 
   constructor(private sportService: SportService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router: Router
     ) { }
 
   ngOnChanges(): void {
@@ -204,15 +207,36 @@ export class SportComponentComponent implements OnChanges {
     showDialog(type: string) {
       this.selectedEditType = type;
       this.display = true;
-      this.selectedEditType = '';
-      
   }
 
-  close() {
+  close() { 
     this.display = false;
   }
 
   save() {
+    if(this.selectedEditType === 'category') {
+      this.sportService.editCategory(this.selectedCategory)
+      .subscribe(response => 
+        this.selectedCategory = response
+      );
+      this.selectedEditType = '';
+    }
+
+    if(this.selectedEditType === 'competition') {
+      this.sportService.editCompetition(this.selectedCompetition)
+      .subscribe(response => 
+        this.selectedCompetition = response
+      );
+      this.selectedEditType = '';
+    }
+
+    if(this.selectedEditType === 'competitor') {
+      this.sportService.editCompetitor(this.selectedCompetitor)
+      .subscribe(response => 
+        this.selectedCompetitor = response
+      );
+      this.selectedEditType = '';
+    }
 
   }
 
