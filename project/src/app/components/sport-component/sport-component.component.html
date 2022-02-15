@@ -124,7 +124,10 @@
     <ng-template pTemplate="header">
        Update
     </ng-template>
-    <ng-container *ngIf="selectedEditType === 'category'" >
+    <ng-container *ngIf="selectedEditType === 'category'">
+        <app-edit-category [selectedCategory]="selectedCategory"></app-edit-category>
+    </ng-container>
+    <!-- <ng-container *ngIf="selectedEditType === 'category'" >
     <label>Edit name:</label>
     <br>
     <input type="text"  pInputText [(ngModel)]="selectedCategory.name">
@@ -138,7 +141,7 @@
         <label>Edit name:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCompetitor.name">
-        </ng-container>
+        </ng-container> -->
     
     <ng-template pTemplate="footer">
         <button id="cancel" type="reset" pButton icon="pi pi-times" label="Close" 
@@ -148,4 +151,5 @@
         (click)="save()"
         ></button>
     </ng-template>
+    
 </p-dialog>

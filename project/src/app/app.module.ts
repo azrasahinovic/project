@@ -32,6 +32,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthGuard } from './services/auth.guard';
 import {ConfirmationService} from 'primeng/api';
 import {DialogModule} from 'primeng/dialog';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {DialogModule} from 'primeng/dialog';
     SportComponentComponent,
     LoadingSpinnerComponent,
     LoginComponent,
+    EditCategoryComponent,
 
   
     
