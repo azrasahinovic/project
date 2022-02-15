@@ -13,17 +13,21 @@
         <br>
         <label>Edit country:</label>
         <br>
-        <input *ngIf="country" type="text"  pInputText [(ngModel)]="selectedCategory.country.name"> 
+        <input *ngIf="selectedCategory.country" type="text"  pInputText [(ngModel)]="selectedCategory.country.name"> 
         <br><label>Edit sourceCategories:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.sourceCategories">
+        <span class="p-float-label"
+                *ngFor="let sourceCategory of sourceCategories" >
+                           {{sourceCategory.name}}
+               </span>
+        <!-- <input  type="text"  pInputText [(ngModel)]="selectedCategory.sourceCategories"> -->
         <br><label>Edit createdAt:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCategory.createdAt">
         <br>
         <label>Edit createdBy:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.createdBy">
+        <input *ngIf="selectedCategory.createdBy" type="text"  pInputText [(ngModel)]="selectedCategory.createdBy">
         <br> 
  </ng-container>
     

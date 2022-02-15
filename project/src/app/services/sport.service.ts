@@ -28,7 +28,7 @@ export class SportService {
   }
   
   getCategoriesForSport(sportID: any): Observable<Category[]> {
-    return this.http.get<Category[]>(`https://devmeta.multifeedcenter.com/Category/sport/${sportID}`)  
+    return this.http.get<Category[]>(`https://devmeta.multifeedcenter.com/Category/sport/${sportID}?icludeSources=true`)  
     
   }
 

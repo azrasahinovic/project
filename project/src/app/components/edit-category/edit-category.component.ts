@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SportService } from 'src/app/services/sport.service';
-import { Category, ICountry } from 'src/app/Sport';
+import { Category, ICountry, ISourceCategory} from 'src/app/Sport';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Category, ICountry } from 'src/app/Sport';
 })
 export class EditCategoryComponent implements OnInit {
   @Input() selectedCategory: any;
-  country: any;
+  sourceCategories!: ISourceCategory[];
 
   constructor(private sportService: SportService) { }
 
