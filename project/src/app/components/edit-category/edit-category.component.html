@@ -1,5 +1,5 @@
  <ng-container *ngIf="selectedCategory">
-        <label>Edit id:</label>
+         <label>Edit id:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCategory.id">
         <br>
@@ -10,12 +10,13 @@
         <label>Edit sportID:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCategory.sportID">
-        <br><label>Edit country:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.country">
+        <label>Edit country:</label>
+        <br>
+        <input *ngIf="country" type="text"  pInputText [(ngModel)]="selectedCategory.country.name"> 
         <br><label>Edit sourceCategories:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.ISourceCategory">
+        <input type="text"  pInputText [(ngModel)]="selectedCategory.sourceCategories">
         <br><label>Edit createdAt:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCategory.createdAt">
@@ -23,7 +24,7 @@
         <label>Edit createdBy:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCategory.createdBy">
-        <br>
+        <br> 
  </ng-container>
     
 
