@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Sport } from 'src/app/Sport';
 import { SportService } from 'src/app/services/sport.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -14,13 +15,15 @@ export class SidemenuComponent implements OnInit {
 
   @Output() select: EventEmitter<any> = new EventEmitter();
 
-  constructor(private sportService: SportService) { }
+  constructor(private sportService: SportService,
+    private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.sportService.getSports().subscribe((sports) => (
-      this.sports = sports));
-      
-      
+    //prvo dohvaćanje sportova u aplikaciji
+    this.sportService.getSports().subscribe((sports) => {
+       this.sports = sports;
+       this.sharedService.setSports(sports)
+    });
   }
 
   selected() {
