@@ -19,6 +19,8 @@ export class SidemenuComponent implements OnInit {
   ngOnInit(): void {
     this.sportService.getSports().subscribe((sports) => (
       this.sports = sports));
+      
+      
   }
 
   selected() {

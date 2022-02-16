@@ -27,6 +27,16 @@ export interface ISourceCategory {
     pairedBy?: string;
   }
 
+  export enum Source {
+    RUNNINGBALL = 1,
+    BETGENIUS = 2,
+    BETRADAR = 3,
+    OPTA = 4,
+    SPORTRADAR = 5,
+    LSPORTS = 10,
+    NEWSPORTS_TX = 201
+  }
+
   export interface ICountry {
     id: string;
     name: string;

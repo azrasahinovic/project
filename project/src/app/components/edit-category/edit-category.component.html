@@ -1,33 +1,35 @@
  <ng-container *ngIf="selectedCategory">
-         <label>Edit id:</label>
+         <label>Category id:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.id">
+        <input type="text"  pInputText [(ngModel)]="selectedCategory.id" disabled>
         <br>
-        <label>Edit name:</label>
+        <label>Name Category:</label>
         <br>
         <input type="text"  pInputText [(ngModel)]="selectedCategory.name">
         <br>
-        <label>Edit sportID:</label>
+        <label>Sport:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.sportID">
+         <span>
+                 {{sport?.name}}
+         </span>
         <br>
-        <label>Edit country:</label>
+        <label>Country:</label>
         <br>
-        <input *ngIf="selectedCategory.country" type="text"  pInputText [(ngModel)]="selectedCategory.country.name"> 
-        <br><label>Edit sourceCategories:</label>
+        <input *ngIf="selectedCategory.country" type="text"  pInputText [(ngModel)]="selectedCategory.country.name" disabled> 
+        <br><label>SourceCategories:</label>
         <br>
         <span class="p-float-label"
                 *ngFor="let sourceCategory of sourceCategories" >
                            {{sourceCategory.name}}
                </span>
         <!-- <input  type="text"  pInputText [(ngModel)]="selectedCategory.sourceCategories"> -->
-        <br><label>Edit createdAt:</label>
+        <br><label>CreatedAt:</label>
         <br>
-        <input type="text"  pInputText [(ngModel)]="selectedCategory.createdAt">
+        <input type="text"  pInputText [(ngModel)]="selectedCategory.createdAt" disabled>
         <br>
-        <label>Edit createdBy:</label>
+        <label>CreatedBy:</label>
         <br>
-        <input *ngIf="selectedCategory.createdBy" type="text"  pInputText [(ngModel)]="selectedCategory.createdBy">
+        <input *ngIf="selectedCategory.createdBy" type="text"  pInputText [(ngModel)]="selectedCategory.createdBy" disabled>
         <br> 
  </ng-container>
     
