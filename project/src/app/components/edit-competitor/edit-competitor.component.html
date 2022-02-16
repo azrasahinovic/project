@@ -1,1 +1,43 @@
-<p>edit-competitor works!</p>
+<ng-container *ngIf="selectedCompetitor">
+    <label>Edit id:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.id">
+    <br>
+    <label>Edit name:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.name">
+    <br>
+    <label>Edit sportID:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.sportID">
+    <br>
+    <label>Edit countryID:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.countryID">
+    <br>
+    <label>Edit country:</label>
+    <br>
+    <input *ngIf="selectedCompetitor.country" type="text"  pInputText [(ngModel)]="selectedCompetitor.country.name">
+    <br><label>Edit sourceCompetitors:</label>
+    <br>
+    <span class="p-float-label"
+            *ngFor="let sourceCompetitor of sourceCompetitors" >
+                       {{sourceCompetitor.name}}
+           </span>
+<br>
+    <label>Edit createdAt:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.createdAt">
+    <br>
+    <label>Edit createdBy:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.createdBy">
+    <br>
+    <label>Edit lastCheckedBy:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.lastCheckedBy">
+    <br>
+    <label>Edit lastCheck:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.lastCheck">
+</ng-container>

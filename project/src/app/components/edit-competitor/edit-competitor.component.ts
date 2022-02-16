@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ISourceCompetitor } from 'src/app/Sport';
 
 @Component({
   selector: 'app-edit-competitor',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-competitor.component.scss']
 })
 export class EditCompetitorComponent implements OnInit {
+  @Input() selectedCompetitor: any;
+  sourceCompetitors!: ISourceCompetitor[];
 
   constructor() { }
 
