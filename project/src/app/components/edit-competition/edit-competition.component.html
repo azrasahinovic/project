@@ -1,0 +1,39 @@
+<ng-container *ngIf="selectedCompetition">
+    <label>Edit id:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.id">
+    <br>
+    <label>Edit name:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.name">
+    <br>
+    <label>Edit sportID:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.sportID">
+    <br>
+    <label>Edit categoryID:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.categoryID">
+    <br><label>Edit sourceCategories:</label>
+        <br>
+        <span class="p-float-label"
+                *ngFor="let sourceCompetition of sourceCompetitions" >
+                           {{sourceCompetition.name}}
+               </span>
+    <br>
+    <label>Edit createdAt:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.createdAt">
+    <br>
+    <label>Edit createdBy:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.createdBy">
+    <br>
+    <label>Edit lastCheckedBy:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.lastCheckedBy">
+    <br>
+    <label>Edit lastCheck:</label>
+    <br>
+    <input type="text"  pInputText [(ngModel)]="selectedCompetition.lastCheck">
+</ng-container>

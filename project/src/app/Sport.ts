@@ -48,15 +48,67 @@ export interface ISourceCategory {
   
 
 export interface Competition {
-    id: number;
-    categoryID: string;
-    name: string;
+  id: string;
+  name: string;
+  sportID: string;
+  categoryID: string;
+  sourceCompetitions: ISourceCompetition[];
+  createdAt?: string;
+  createdBy?: string;
+  lastCheckedBy?: string;
+  lastCheck?: string;
+  deleted?: boolean;
+}
+
+export interface ISourceCompetition {
+  competitionID: string;
+  source: number;
+  sourceCompetitionID: string;
+  sourceSportID: string;
+  sourceCategoryID: string;
+  currentSourceSeasonID: string;
+  name: string;
+  pairedAt?: string;
+  pairedBy?: string;
+}
+
+export interface ICompetitionTranslation {
+  competitionID: string;
+  languageID: string;
+  value: string;
 }
 
 export interface Competitor {
-    id: number;
-    competitionID: string;
-    name: string;
+  id: string;
+  name: string;
+  sportID: string;
+  countryID: string;
+  country: ICountry;
+  sourceCompetitors: ISourceCompetitor[];
+  translations: ICompetitorTranslation[];
+  createdAt?: string;
+  createdBy?: string;
+  lastCheckedBy?: string;
+  lastCheck?: string;
+  deleted?: boolean;
+}
+
+export interface ICompetitorTranslation {
+  competitorID: string;
+  languageID: string;
+  value: string;
+}
+
+
+export interface ISourceCompetitor {
+  competitorID: string;
+  source: number;
+  sourceCompetitorID: string;
+  name: string;
+  sourceSportID: string;
+  sourceCountryID: string;
+  pairedAt?: string;
+  pairedBy?: string;
 }
 
 export interface Player {

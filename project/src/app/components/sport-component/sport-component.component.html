@@ -127,6 +127,9 @@
     <ng-container *ngIf="selectedEditType === 'category'">
         <app-edit-category [selectedCategory]="selectedCategory"></app-edit-category>
     </ng-container>
+    <ng-container *ngIf="selectedEditType === 'competition'">
+        <app-edit-competition [selectedCompetition]="selectedCompetition"></app-edit-competition>
+    </ng-container>
     <!-- <ng-container *ngIf="selectedEditType === 'category'" >
     <label>Edit name:</label>
     <br>

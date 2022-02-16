@@ -33,6 +33,8 @@ import { AuthGuard } from './services/auth.guard';
 import {ConfirmationService} from 'primeng/api';
 import {DialogModule} from 'primeng/dialog';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { EditCompetitionComponent } from './components/edit-competition/edit-competition.component';
+import { EditCompetitorComponent } from './components/edit-competitor/edit-competitor.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
     LoadingSpinnerComponent,
     LoginComponent,
     EditCategoryComponent,
+    EditCompetitionComponent,
+    EditCompetitorComponent,
 
   
     
