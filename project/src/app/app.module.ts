@@ -35,6 +35,7 @@ import {DialogModule} from 'primeng/dialog';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
 import { EditCompetitionComponent } from './components/edit-competition/edit-competition.component';
 import { EditCompetitorComponent } from './components/edit-competitor/edit-competitor.component';
+import { SharedService } from './services/shared.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { EditCompetitorComponent } from './components/edit-competitor/edit-compe
   providers: [MessageService, 
     SportService,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthGuard,
-    ConfirmationService
+    ConfirmationService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })
