@@ -27,17 +27,17 @@
 <br>
     <label>Edit createdAt:</label>
     <br>
-    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.createdAt">
+    <input *ngIf="selectedCompetitor.createdAt" type="text"  pInputText [(ngModel)]="selectedCompetitor.createdAt">
     <br>
     <label>Edit createdBy:</label>
     <br>
-    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.createdBy">
+    <input *ngIf="selectedCompetitor.createdBy" type="text"  pInputText [(ngModel)]="selectedCompetitor.createdBy">
     <br>
     <label>Edit lastCheckedBy:</label>
     <br>
-    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.lastCheckedBy">
+    <input *ngIf="selectedCompetitor.lastCheckedBy" type="text"  pInputText [(ngModel)]="selectedCompetitor.lastCheckedBy">
     <br>
     <label>Edit lastCheck:</label>
     <br>
-    <input type="text"  pInputText [(ngModel)]="selectedCompetitor.lastCheck">
+    <input *ngIf="selectedCompetitor.lastCheck" type="text"  pInputText [(ngModel)]="selectedCompetitor.lastCheck">
 </ng-container>
