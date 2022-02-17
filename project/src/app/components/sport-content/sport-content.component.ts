@@ -10,6 +10,8 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class SportContentComponent implements OnInit {
    selectedSport: any;
+   selectedCategory: any;
+   selectedCompetition: any;
 
   constructor(private sportService: SportService,
     private sharedService: SharedService) { }

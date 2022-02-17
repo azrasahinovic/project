@@ -1,0 +1,91 @@
+<br>
+<div class="row">
+    <div class="col-md-6">
+    <p-dropdown 
+[options]="competitors"
+(onChange)="selectCompetitor()"
+[(ngModel)]="selectedCompetitor" 
+ placeholder="Select Competitor" 
+optionLabel="name" 
+[showClear]="true">
+</p-dropdown>  
+</div>
+
+<div class="col">
+    <div *ngIf="selectedCompetitor">
+ <span class="p-float-label mt-4">
+  <input id="float-input" type="text" [(ngModel)]="selectedCompetitor.id" pInputText> 
+ <label  for="float-input">
+     id: 
+ </label>
+</span>
+<span class="p-float-label mt-4">
+ <input id="float-input" type="text" [(ngModel)]="selectedCompetitor.name" pInputText> 
+ <label for="float-input" >
+       name: 
+ </label>
+</span>
+<button pButton 
+class="button mt-2" 
+type="button" 
+(click)="showDialog('competitor')"
+label="Edit" >
+</button>
+</div> 
+</div>
+</div>
+<br>
+<div class="row">
+    <div class="col-6">
+
+    </div>
+    <div class="col">
+        <div *ngIf="selectedCompetitor">
+                   <span class="p-float-label">
+                        <input id="float-input" type="text" pInputText disabled> 
+                        <label for="float-input">
+                         
+                           Players:
+                         </label>
+                   </span>
+                   <div *ngIf="isLoading">
+                       <app-loading-spinner></app-loading-spinner>
+                   </div>
+                  
+                       <span class="p-float-label"
+                    *ngFor="let player of players" >
+                        <input id="float-input" type="text" pInputText disabled> 
+                        <label for="float-input">
+                            <div *ngIf="!isLoading">
+                               {{player.name}} 
+                            </div>
+                           
+                         </label>
+                   </span>
+                   
+                   
+              </div>
+    </div>
+    
+     </div>
+
+
+
+ <p-dialog [(visible)]="display">
+    <ng-template pTemplate="header">
+       Update
+    </ng-template>
+    <ng-container *ngIf="selectedEditType === 'competitor'">
+        <app-edit-competitor [selectedCompetitor]="selectedCompetitor"></app-edit-competitor>
+    </ng-container>
+    <ng-template pTemplate="footer">
+        <button id="cancel" type="reset" pButton icon="pi pi-times" label="Close" 
+        (click)="close()"
+        ></button>
+        <button type="button" pButton icon="pi pi-check" label="Save"
+        (click)="save()"
+        ></button>
+    </ng-template>
+    
+  </p-dialog>
+  

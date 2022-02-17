@@ -36,6 +36,9 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
 import { EditCompetitionComponent } from './components/edit-competition/edit-competition.component';
 import { EditCompetitorComponent } from './components/edit-competitor/edit-competitor.component';
 import { SharedService } from './services/shared.service';
+import { CategoryComponent } from './components/category/category.component';
+import { CompetitionComponent } from './components/competition/competition.component';
+import { CompetitorComponent } from './components/competitor/competitor.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import { SharedService } from './services/shared.service';
     EditCategoryComponent,
     EditCompetitionComponent,
     EditCompetitorComponent,
+    CategoryComponent,
+    CompetitionComponent,
+    CompetitorComponent,
 
   
     

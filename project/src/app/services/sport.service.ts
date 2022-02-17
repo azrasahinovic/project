@@ -16,6 +16,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SportService {
+  getCompetitorsForCategories(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  getSelectedCategory() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 

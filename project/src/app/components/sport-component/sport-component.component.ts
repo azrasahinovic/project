@@ -245,7 +245,5 @@ export class SportComponentComponent implements OnChanges {
   }
 
 }
-function getCategories(getCategories: any) {
-  throw new Error('Function not implemented.');
-}
+
 
