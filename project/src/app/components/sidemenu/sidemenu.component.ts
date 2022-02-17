@@ -27,7 +27,7 @@ export class SidemenuComponent implements OnInit {
   }
 
   selected() {
-    this.select.emit(this.selectedSport);
+    this.sharedService.setSelectedSport(this.selectedSport);
   }
 
 

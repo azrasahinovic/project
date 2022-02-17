@@ -20,7 +20,7 @@ export class EditCategoryComponent implements OnInit {
     // this.sportService.getSports()
     // .subscribe( sports => 
     //   this.sport = sports.find(el => el.id === this.selectedCategory.sportID));
-    this.sport = this.sharedService.getSport()
+    this.sport = this.sharedService.getSports()
     .find((el: Sport) => el.id === this.selectedCategory.sportID)
   }
 }

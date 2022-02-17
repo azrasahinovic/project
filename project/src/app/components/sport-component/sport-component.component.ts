@@ -2,6 +2,7 @@ import { Component, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { throwIfEmpty } from 'rxjs';
+import { SharedService } from 'src/app/services/shared.service';
 import { SportService } from 'src/app/services/sport.service';
 import { Category, Competition, Competitor, Player } from 'src/app/Sport';
 
@@ -42,7 +43,8 @@ export class SportComponentComponent implements OnChanges {
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
     private confirmationService: ConfirmationService,
-    private router: Router
+    private router: Router,
+    private sharedService: SharedService
     ) { }
 
   ngOnChanges(): void {
@@ -52,6 +54,8 @@ export class SportComponentComponent implements OnChanges {
     .subscribe(
       (categories) => {
         this.categories = categories.sort((a, b) => a.name.localeCompare(b.name));
+        this.sharedService.setCategories(categories);
+        
         if(this.categories == null || this.categories.length === 0) {
           this.messageService.add(
             {
@@ -89,17 +93,17 @@ export class SportComponentComponent implements OnChanges {
         this.competitors = [];
         this.players = [];
 
+       
         this.getCompetitionsForCategory(this.selectedCategory.id);
       }
     }
-    
-    
+
       getCompetitionsForCategory(category: string) {
         
         this.sportService.getCompetitionsForCategories(category).subscribe(
           (competitions) => {
       this.competitions = competitions;
-      
+     
 
       if(this.competitions == null || this.competitions.length === 0) {
         this.messageService.add(
@@ -241,3 +245,7 @@ export class SportComponentComponent implements OnChanges {
   }
 
 }
+function getCategories(getCategories: any) {
+  throw new Error('Function not implemented.');
+}
+
